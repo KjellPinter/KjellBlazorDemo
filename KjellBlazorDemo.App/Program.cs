@@ -1,4 +1,4 @@
-using KjellBlazorDemo;
+using KjellBlazorDemo.App;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

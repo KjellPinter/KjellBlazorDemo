@@ -3,17 +3,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:65349",
-      "sslPort": 44398
+      "applicationUrl": "http://localhost:21700",
+      "sslPort": 44331
     }
   },
   "profiles": {
-    "KjellBlazorDemo": {
+    "KjellBlazorDemo.App": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "applicationUrl": "https://localhost:7299;http://localhost:5299",
+      "applicationUrl": "https://localhost:7096;http://localhost:5096",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

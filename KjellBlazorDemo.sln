@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo", "KjellBlazorDemo\KjellBlazorDemo.csproj", "{7FF749DE-6DBB-4E94-8FA3-155B7B4FA01E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo.AppTests", "KjellBlazor.AppTests\KjellBlazorDemo.AppTests.csproj", "{9425A5A1-01E3-487D-B108-92B4C8FFFDFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo.App", "KjellBlazorDemo.App\KjellBlazorDemo.App.csproj", "{7642DB23-3164-4F64-86FD-CAEB58913B0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7FF749DE-6DBB-4E94-8FA3-155B7B4FA01E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FF749DE-6DBB-4E94-8FA3-155B7B4FA01E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FF749DE-6DBB-4E94-8FA3-155B7B4FA01E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FF749DE-6DBB-4E94-8FA3-155B7B4FA01E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9425A5A1-01E3-487D-B108-92B4C8FFFDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9425A5A1-01E3-487D-B108-92B4C8FFFDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9425A5A1-01E3-487D-B108-92B4C8FFFDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9425A5A1-01E3-487D-B108-92B4C8FFFDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7642DB23-3164-4F64-86FD-CAEB58913B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7642DB23-3164-4F64-86FD-CAEB58913B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7642DB23-3164-4F64-86FD-CAEB58913B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7642DB23-3164-4F64-86FD-CAEB58913B0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
