@@ -11,4 +11,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.7" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\GrassTile1124x1124.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KjellBlazorDemo.Engine\KjellBlazorDemo.Engine.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo.App", "Kjel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo.AppTests", "KjellBlazorDemo.AppTests\KjellBlazorDemo.AppTests.csproj", "{77ACE62F-2474-4D17-9297-BA24DC1E14BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo.Engine", "KjellBlazorDemo.Engine\KjellBlazorDemo.Engine.csproj", "{95A95D12-EC07-412E-86BE-030187FA8E8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{77ACE62F-2474-4D17-9297-BA24DC1E14BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77ACE62F-2474-4D17-9297-BA24DC1E14BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77ACE62F-2474-4D17-9297-BA24DC1E14BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A95D12-EC07-412E-86BE-030187FA8E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A95D12-EC07-412E-86BE-030187FA8E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A95D12-EC07-412E-86BE-030187FA8E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A95D12-EC07-412E-86BE-030187FA8E8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
