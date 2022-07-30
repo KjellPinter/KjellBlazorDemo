@@ -12,7 +12,7 @@ namespace KjellBlazorDemo.Engine
             _player = player;
         }
 
-
+        
 
         public void KeyDown(string key)
         {
@@ -35,5 +35,6 @@ namespace KjellBlazorDemo.Engine
                     break;
             }
         }
+
     }
 }

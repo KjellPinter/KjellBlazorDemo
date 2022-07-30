@@ -8,6 +8,6 @@ namespace KjellBlazorDemo.Engine
 {
     public static class Settings
     {
-        public static int MOVEMENT_DISTANCE = 35;
+        public const int MOVEMENT_DISTANCE = 35;
     }
 }

@@ -15,19 +15,17 @@
 
 <div id="mainDiv" @ref="mainDiv" @onkeydown="HandleKeyDown" @onkeydown:preventDefault tabindex="0">    
     
-    <div class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;">
+    <div id="player" class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;">
     </div>
 
 </div>
 
 @code {
 
-
     private ElementReference mainDiv;
     private Timer? _timer;
 
     private void HandleKeyDown(KeyboardEventArgs a) {
-        Console.WriteLine("key down called");
         Controls.KeyDown(a.Code); 
     }
 
@@ -50,14 +48,13 @@
         return base.OnInitializedAsync();
     }
 
-    private void TimerElapsed(Object source, ElapsedEventArgs a)
+    private void TimerElapsed(Object? source, ElapsedEventArgs a)
     {
         Redraw();
     }
 
     private void Redraw()
     {
-        //Console.WriteLine("REDRAW");  this is definitely getting called
         this.StateHasChanged();
     }
 }
