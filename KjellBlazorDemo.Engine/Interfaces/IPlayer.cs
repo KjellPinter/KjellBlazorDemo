@@ -10,7 +10,9 @@ namespace KjellBlazorDemo.Engine.Interfaces
     {
         public int PositionTop { get; set;  }
         public int PositionLeft { get; set;  }
-        public void Move(string Direction);
+        public void MoveHorizontal(int amount);
+
+        public void MoveVertical(int amount);
 
     }      
 }

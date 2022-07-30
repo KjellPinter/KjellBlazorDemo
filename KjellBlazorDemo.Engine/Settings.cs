@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KjellBlazorDemo.Engine.Interfaces
+namespace KjellBlazorDemo.Engine
 {
-    public interface IControls
+    public static class Settings
     {
-        
-        void KeyDown(string key);
-
+        public static int MOVEMENT_DISTANCE = 35;
     }
 }

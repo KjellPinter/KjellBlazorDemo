@@ -1,30 +1,63 @@
 ﻿@page "/"
+@using System.Timers
+@using KjellBlazorDemo.Engine
+@using KjellBlazorDemo.Engine.Interfaces
+@inject IPlayer Player
+@inject IControls Controls
+
 
 <PageTitle>Hello</PageTitle>
 
-
 <style>
 
-    #mainDiv {
- background-image: url("Images/GrassTile1124x1124.png");
- background-color: #cccccc;
- /*lazy way to make it look higher res [TODO]*/
- background-size: 300px; 
- position: absolute;
- top: 0px;
- left: 0px;
- <!-- this makes it take the entire window even the navbar -->
- width: 100vw;
- height: 100vw;
-}
+
 </style>
 
-<div id="mainDiv">
+<div id="mainDiv" @ref="mainDiv" @onkeydown="HandleKeyDown" @onkeydown:preventDefault tabindex="0">    
     
-    
+    <div class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;">
+    </div>
 
 </div>
 
 @code {
 
+
+    private ElementReference mainDiv;
+    private Timer? _timer;
+
+    private void HandleKeyDown(KeyboardEventArgs a) {
+        Console.WriteLine("key down called");
+        Controls.KeyDown(a.Code); 
+    }
+
+    protected override async Task OnAfterRenderAsync(bool first)
+    {
+        if (first)
+        {
+            await mainDiv.FocusAsync();
+        }
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        _timer = new Timer();
+        _timer.Interval = 20;
+        _timer.Elapsed += TimerElapsed;
+        _timer.AutoReset = true;
+        _timer.Enabled = true;
+
+        return base.OnInitializedAsync();
+    }
+
+    private void TimerElapsed(Object source, ElapsedEventArgs a)
+    {
+        Redraw();
+    }
+
+    private void Redraw()
+    {
+        //Console.WriteLine("REDRAW");  this is definitely getting called
+        this.StateHasChanged();
+    }
 }

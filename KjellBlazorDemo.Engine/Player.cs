@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KjellBlazorDemo.Engine.Interfaces;
+﻿using KjellBlazorDemo.Engine.Interfaces;
 
 namespace KjellBlazorDemo.Engine
 {
@@ -12,9 +7,20 @@ namespace KjellBlazorDemo.Engine
         public int PositionTop { get; set; }
         public int PositionLeft { get; set; }
 
-        public void Move(string Direction)
+        public Player()
         {
-            
+            PositionTop = 100;
+            PositionLeft = 200;
+        }
+
+        public void MoveHorizontal(int amount)
+        {
+            PositionLeft += amount;
+        }
+
+        public void MoveVertical(int amount)
+        {
+            PositionTop += amount;
         }
     }
 }

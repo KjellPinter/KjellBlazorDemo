@@ -1,0 +1,24 @@
+﻿body {
+}
+
+#mainDiv {
+    background-image: url("Images/GrassTile1124x1124.png");
+    background-color: #cccccc;
+    /*lazy way to make it look higher res [TODO]*/
+    background-size: 150px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vw;
+}
+
+.player {
+
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    position: relative;
+    background-image: url(Images/ch003.png);
+    background-position: -0px -0px;
+}
