@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KjellBlazorDemo.AppTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KjellBlazorDemo.Engine", "KjellBlazorDemo.Engine\KjellBlazorDemo.Engine.csproj", "{95A95D12-EC07-412E-86BE-030187FA8E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KjellBlazorDemo.EngineTests", "KjellBlazorDemo.EngineTests\KjellBlazorDemo.EngineTests.csproj", "{2920C742-7F59-4BE4-89C5-6C2B43A673CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KjellBlazorDemo.EngineTests", "KjellBlazorDemo.EngineTests\KjellBlazorDemo.EngineTests.csproj", "{2920C742-7F59-4BE4-89C5-6C2B43A673CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
