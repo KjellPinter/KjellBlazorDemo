@@ -9,16 +9,19 @@ namespace KjellBlazorDemo.EngineTests
         private Controls? _controls;
 
         [Theory]
-        [InlineData("ArrowLeft", -Settings.MOVEMENT_DISTANCE, 1, 0)]
-        [InlineData("ArrowRight", Settings.MOVEMENT_DISTANCE, 1, 0)]
-        [InlineData("ArrowUp", -Settings.MOVEMENT_DISTANCE, 0, 1)]
-        [InlineData("ArrowDown", Settings.MOVEMENT_DISTANCE, 0, 1)]
-        public void ArrowsMovePlayer(string key, int amount, int horizontal, int vertical)
+        [InlineData("ArrowLeft", 1, 0)]
+        [InlineData("ArrowRight", 1, 0)]
+        [InlineData("ArrowUp", 0, 1)]
+        [InlineData("ArrowDown", 0, 1)]
+        public void ArrowsMovePlayer(string key, int horizontal, int vertical)
         {
             //assert 
             var _player = new Mock<IPlayer>();
-            _controls = new Controls(_player.Object);
+            var _settings = new Mock<Settings>();
 
+            _controls = new Controls(_player.Object, _settings.Object);
+
+            int amount = _settings.Object.MOVEMENT_DISTANCE;
 
             //act
             _controls.KeyDown(key);

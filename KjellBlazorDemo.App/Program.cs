@@ -13,5 +13,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddSingleton<IPlayer, Player>();
 builder.Services.AddSingleton<IControls, Controls>();
+builder.Services.AddSingleton<Settings>();
 
 await builder.Build().RunAsync();

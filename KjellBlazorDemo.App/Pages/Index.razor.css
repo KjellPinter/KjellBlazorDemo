@@ -22,3 +22,26 @@
     background-image: url(Images/ch003.png);
     background-position: -0px -0px;
 }
+
+#Menu {
+    background-color: rgb(89, 83, 83);
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+}
+
+    #Menu ul {
+        padding: 0px;
+        padding-left: 10px;
+        margin: 0px;
+        list-style: none;
+    }
+
+        #Menu ul li {
+            background-color: rgb(89, 83, 83);
+            float: left;
+            width: 100px;
+            color: white;
+        }
+
+

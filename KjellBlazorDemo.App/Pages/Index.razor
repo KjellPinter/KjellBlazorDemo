@@ -2,16 +2,22 @@
 @using System.Timers
 @using KjellBlazorDemo.Engine
 @using KjellBlazorDemo.Engine.Interfaces
+@using KjellBlazorDemo.App.Components
 @inject IPlayer Player
 @inject IControls Controls
 
 
 <PageTitle>Hello</PageTitle>
 
-<style>
+<div id="Menu">
+    <ul>
+        <li>File</li>
+        <li @onclick="ShowSettings">Settings</li>
+        <li>About</li>
+    </ul>
+</div>
 
 
-</style>
 
 <div id="mainDiv" @ref="mainDiv" @onkeydown="HandleKeyDown" @onkeydown:preventDefault tabindex="0">    
     
@@ -19,6 +25,8 @@
     </div>
 
 </div>
+
+<SettingsDialog @ref="SettingsDialog"></SettingsDialog>
 
 @code {
 
