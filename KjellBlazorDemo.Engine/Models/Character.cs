@@ -13,13 +13,17 @@ namespace KjellBlazorDemo.Engine.Models
         public int offsetY { get; set; }    
         public int offsetX { get; set; }   
 
+        public string Sprite { get; set; }
+
+
+
         public Character()
         {
-            //setting this intentionally to invalid value so it's obvious when it's not actually respecting the settings
             Id = 0;
-            Name = "";
+            Name = "FooBizzle";
             offsetY = 0;
             offsetX = 0;
+            Sprite = "Images/CharacterSprites/Fighter-F-01.png";
         }
     }
 }

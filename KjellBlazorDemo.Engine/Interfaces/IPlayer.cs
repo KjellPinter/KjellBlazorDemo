@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KjellBlazorDemo.Engine.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace KjellBlazorDemo.Engine.Interfaces
         public void MoveHorizontal(int amount);
 
         public void MoveVertical(int amount);
+        public Character Character { get; set; }
 
     }      
 }

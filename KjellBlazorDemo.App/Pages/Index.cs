@@ -12,7 +12,7 @@ namespace KjellBlazorDemo.App.Pages
 
         public Index()
         {
-            SettingsDialog = new SettingsDialog();
+            SettingsDialog = new SettingsDialog(this.Player);
         }
 
         public void ShowSettings()

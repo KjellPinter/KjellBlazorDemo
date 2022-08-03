@@ -1,4 +1,24 @@
-﻿
+﻿@using KjellBlazorDemo.Engine.Models
+@using KjellBlazorDemo.Engine
+@using KjellBlazorDemo.Engine.Interfaces
+@using KjellBlazorDemo.App.Components
+@inject HttpClient Http
+@inject IPlayer Player
+
+@functions {
+     
+
+    public void SaveChanges()
+    {
+        Player.Character = Characters[settings.CHARACTER];            
+
+        ShowDialog = false;
+
+        StateHasChanged();
+    }
+
+}
+
 @if (ShowDialog)
 {
 <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
@@ -29,13 +49,19 @@
                         <label>Character</label>
                     </div>
                     <div class="col-sm">
-                        @*<InputSelect id="Character" />*@
+                        <select class="form-control" @bind="@settings.CHARACTER">
+                        <option value=""></option>
+                            @foreach(var c in Characters)
+                            {
+                                <option value = "@c.Id"> @c.Name </option >
+                            }
+}                       </select>
                     </div>
                 </div>
             </div>
 
             <div style="margin: .5rem;">
-                <button type="button" class="btn btn-primary" style="float: right; margin-right: 0px">Save Changes!</button>
+                <button type="button" @onclick="SaveChanges" class="btn btn-primary" style="float: right; margin-right: 0px">Save Changes!</button>
                 <button type="button" @onclick="@Close" class="btn btn-secondary" style="float: right; margin-right: 5px">Close</button>                
             </div>                  
               
