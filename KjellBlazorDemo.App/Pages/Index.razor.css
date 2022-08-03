@@ -15,12 +15,11 @@
 
 .player {
 
-    width: 32px;
+    width: 30px;
     height: 32px;
     overflow: hidden;
-    position: relative;
-    background-image: url(Images/CharacterSprites/Fighter-M-01.png);
-    background-position: -0px -0px;
+    position: relative;    
+    background-position: -22px -65px;
 }
 
 #Menu {

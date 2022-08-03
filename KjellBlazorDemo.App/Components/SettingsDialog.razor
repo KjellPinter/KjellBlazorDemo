@@ -10,10 +10,8 @@
 
     public void SaveChanges()
     {
-        Player.Character = Characters[settings.CHARACTER];            
-
+        Player.Character = Characters[settings.CHARACTER -1];            
         ShowDialog = false;
-
         StateHasChanged();
     }
 

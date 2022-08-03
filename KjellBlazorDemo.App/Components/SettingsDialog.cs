@@ -15,12 +15,7 @@ namespace KjellBlazorDemo.App.Components
         
         public SettingsDialog()
         {
-
-        }
-
-        public SettingsDialog(IPlayer player)
-        {
-            //_player = player;
+           
         }
 
         protected override async Task OnInitializedAsync()
