@@ -32,8 +32,11 @@ namespace KjellBlazorDemo.Engine
             PositionLeft += amount;
         }
 
-        public void MoveVertical(int amount)
+        public void MoveVertical(int amount, int minY, int maxY)
         {
+            if (PositionTop + amount < minY)
+                amount = 0;
+
             PositionTop += amount;
         }
     }

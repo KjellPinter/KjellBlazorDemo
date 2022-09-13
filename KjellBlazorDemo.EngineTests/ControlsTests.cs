@@ -36,11 +36,11 @@ namespace KjellBlazorDemo.EngineTests
 
             //assert
             _player.Verify(x => x.MoveHorizontal(amount, _settings.Object.MIN_X, _settings.Object.MAX_X), Times.Exactly(horizontal));
-            _player.Verify(x => x.MoveVertical(amount), Times.Exactly(vertical));
+            _player.Verify(x => x.MoveVertical(amount, _settings.Object.MIN_Y, _settings.Object.MAX_Y), Times.Exactly(vertical));
         }
 
         [Fact]
-        public void DontAllowMoveOffscreen()
+        public void DontAllowMoveOffscreenLeftTop()
         {
             //setup a real player object
             var Player = new PlayerManager();
@@ -53,8 +53,14 @@ namespace KjellBlazorDemo.EngineTests
                 Controls.KeyDown("ArrowLeft");
             }
 
+            for (int i = 0; i < 50; i++)
+            {
+                Controls.KeyDown("ArrowUp");
+            }
+
             //assert
             Assert.True(Player.PositionLeft > Settings.MIN_X);
+            Assert.True(Player.PositionTop > Settings.MIN_Y);
         }
 
 

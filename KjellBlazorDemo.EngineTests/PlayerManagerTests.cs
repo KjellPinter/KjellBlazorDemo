@@ -28,7 +28,7 @@ namespace KjellBlazorDemo.EngineTests
             int positionLeft = _player.PositionLeft;
 
             //act
-            _player.MoveVertical(_settings.MOVEMENT_DISTANCE);
+            _player.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
             _player.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
 
             //assert

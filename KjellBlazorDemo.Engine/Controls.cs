@@ -25,10 +25,10 @@ namespace KjellBlazorDemo.Engine
                     _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
                     break;
                 case "ArrowUp":
-                    _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
                     break;
                 case "ArrowDown":
-                    _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
                     break;
                 default:
                     //throw new ArgumentException("no definition for this key");
