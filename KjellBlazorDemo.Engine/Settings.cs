@@ -7,22 +7,30 @@ using System.Threading.Tasks;
 
 namespace KjellBlazorDemo.Engine
 {
-    //todo - I think the class can't be static if we are binding it but I need to double check,
-    //if it can be then it might make sense to make the class static
+
     public class Settings
     {
-        //while these aren't technically consts, I'm upper casing them because I want them to 
-        //be used as consts by anyone that is consuming this class
-        public int MOVEMENT_DISTANCE = 35;
+ 
+        public Settings()
+        {
+            MOVEMENT_DISTANCE = 35;
+            CHARACTER = 0;
+            MIN_X = 0;
+            MAX_X = 400;
+            MIN_Y = 0;
+            MAX_Y = 400;
+        }
 
-        public int CHARACTER = 0;
+        public int MOVEMENT_DISTANCE { get; set; }
 
-        public int MIN_X = 0;
+        public int CHARACTER  { get; set; }
 
-        public int MAX_X = 400;
+        public int MIN_X  { get; set; }
 
-        public int MIN_Y = 0;
+        public int MAX_X { get; set; }
 
-        public int MAX_Y = 400;
+        public int MIN_Y { get; set; }
+
+        public int MAX_Y { get; set; }
     }
 }
