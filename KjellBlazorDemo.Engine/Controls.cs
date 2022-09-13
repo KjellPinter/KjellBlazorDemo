@@ -19,10 +19,10 @@ namespace KjellBlazorDemo.Engine
             switch (key)
             {
                 case "ArrowLeft":
-                    MoveLeft(_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveHorizontal(-_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
                     break;
                 case "ArrowRight":
-                    _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
                     break;
                 case "ArrowUp":
                     _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE);
@@ -36,13 +36,5 @@ namespace KjellBlazorDemo.Engine
             }
         }
 
-        private void MoveLeft(int distance)
-        {
-            if (_playerManager.PositionLeft - distance < _settings.MIN_X)
-                distance = 0;
-                       
-            _playerManager.MoveHorizontal(-distance);
-                        
-        }
     }
 }

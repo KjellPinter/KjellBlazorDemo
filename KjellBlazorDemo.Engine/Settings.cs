@@ -19,6 +19,8 @@ namespace KjellBlazorDemo.Engine
 
         public int MIN_X = 0;
 
+        public int MAX_X = 400;
+
         public int MIN_Y = -10;
     }
 }

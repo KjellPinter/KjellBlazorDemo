@@ -24,8 +24,11 @@ namespace KjellBlazorDemo.Engine
                 this.PositionTop.ToString(), ")");
         }
 
-        public void MoveHorizontal(int amount)
+        public void MoveHorizontal(int amount, int minX, int maxX)
         {
+            if (PositionLeft + amount < minX)
+                amount = 0;
+
             PositionLeft += amount;
         }
 

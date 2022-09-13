@@ -35,7 +35,7 @@ namespace KjellBlazorDemo.EngineTests
             _controls.KeyDown(key);
 
             //assert
-            _player.Verify(x => x.MoveHorizontal(amount), Times.Exactly(horizontal));
+            _player.Verify(x => x.MoveHorizontal(amount, _settings.Object.MIN_X, _settings.Object.MAX_X), Times.Exactly(horizontal));
             _player.Verify(x => x.MoveVertical(amount), Times.Exactly(vertical));
         }
 

@@ -29,7 +29,7 @@ namespace KjellBlazorDemo.EngineTests
 
             //act
             _player.MoveVertical(_settings.MOVEMENT_DISTANCE);
-            _player.MoveHorizontal(_settings.MOVEMENT_DISTANCE);
+            _player.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
 
             //assert
             Assert.Equal(_player.PositionTop, positionTop + _settings.MOVEMENT_DISTANCE);
