@@ -15,6 +15,10 @@ namespace KjellBlazorDemo.Engine
         //be used as consts by anyone that is consuming this class
         public int MOVEMENT_DISTANCE = 35;
 
-        public int CHARACTER = 0; 
+        public int CHARACTER = 0;
+
+        public int MIN_X = 0;
+
+        public int MIN_Y = -10;
     }
 }

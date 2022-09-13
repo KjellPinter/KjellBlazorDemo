@@ -10,9 +10,9 @@ namespace KjellBlazorDemo.Engine
     public class GameState : IGameState
     {
 
-        private readonly IPlayer _player;
+        private readonly IPlayerManager _player;
 
-        public GameState(IPlayer player)
+        public GameState(IPlayerManager player)
         {
             _player = player;
         }

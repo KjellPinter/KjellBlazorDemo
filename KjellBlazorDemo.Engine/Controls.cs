@@ -5,32 +5,30 @@ namespace KjellBlazorDemo.Engine
     public class Controls : IControls
     {
 
-        private readonly IPlayer _player;
+        private IPlayerManager _playerManager;
         private readonly Settings _settings;
 
-        public Controls(IPlayer player, Settings settings)
+        public Controls(IPlayerManager player, Settings settings)
         {
-            _player = player;
+            _playerManager = player;
             _settings = settings;
         }
-
-        
 
         public void KeyDown(string key)
         {
             switch (key)
             {
                 case "ArrowLeft":
-                    _player.MoveHorizontal(-_settings.MOVEMENT_DISTANCE);
+                    MoveLeft(_settings.MOVEMENT_DISTANCE);
                     break;
                 case "ArrowRight":
-                    _player.MoveHorizontal(_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE);
                     break;
                 case "ArrowUp":
-                    _player.MoveVertical(-_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE);
                     break;
                 case "ArrowDown":
-                    _player.MoveVertical(_settings.MOVEMENT_DISTANCE);
+                    _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE);
                     break;
                 default:
                     //throw new ArgumentException("no definition for this key");
@@ -38,5 +36,13 @@ namespace KjellBlazorDemo.Engine
             }
         }
 
+        private void MoveLeft(int distance)
+        {
+            if (_playerManager.PositionLeft - distance < _settings.MIN_X)
+                distance = 0;
+                       
+            _playerManager.MoveHorizontal(-distance);
+                        
+        }
     }
 }

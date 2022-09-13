@@ -11,7 +11,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-builder.Services.AddSingleton<IPlayer, Player>();
+builder.Services.AddSingleton<IPlayerManager, PlayerManager>();
 builder.Services.AddSingleton<IControls, Controls>();
 builder.Services.AddSingleton<Settings>();
 

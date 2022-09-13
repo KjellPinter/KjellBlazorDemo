@@ -21,10 +21,12 @@ namespace KjellBlazorDemo.Engine.Models
         public Character()
         {
             Id = 0;
-            Name = "Default Lady";
+            Name = "Fighter";
             offsetY = -40;
             offsetX = -64;
             Sprite = "Images/CharacterSprites/Fighter-F-01.png";
         }
+
+        
     }
 }

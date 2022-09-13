@@ -3,7 +3,7 @@
 @using KjellBlazorDemo.Engine
 @using KjellBlazorDemo.Engine.Interfaces
 @using KjellBlazorDemo.App.Components
-@inject IPlayer Player
+@inject IPlayerManager Player
 @inject IControls Controls
 
 
@@ -14,17 +14,16 @@
         <li>File</li>
         <li @onclick="ShowSettings">Settings</li>
         <li>About</li>
-    </ul>
+        <li>@(Player.ToString())</li>
+    </ul>    
 </div>
 
 
 
 <div id="mainDiv" @ref="mainDiv" @onkeydown="HandleKeyDown" @onkeydown:preventDefault tabindex="0">    
     
-    <h1>@(Player.Character.Name)</h1>
     <div id="player" class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;
-        background-image: url(@(Player.Character.Sprite)); "
-        
+        background-image: url(@(Player.Character.Sprite)); "        
     >
     </div>
 

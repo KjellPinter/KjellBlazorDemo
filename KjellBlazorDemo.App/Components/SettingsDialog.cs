@@ -25,6 +25,7 @@ namespace KjellBlazorDemo.App.Components
 
 
 
+
         public void Close()
         {
             ShowDialog = false;

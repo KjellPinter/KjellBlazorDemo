@@ -5,8 +5,11 @@ using Moq;
 namespace KjellBlazorDemo.EngineTests
 {
     public class ControlsTests
-    {
-        private Controls? _controls;
+    {        
+
+        public ControlsTests()
+        {         
+        }
 
         [Theory]
         [InlineData("ArrowLeft", 1, 0)]
@@ -16,10 +19,10 @@ namespace KjellBlazorDemo.EngineTests
         public void ArrowsMovePlayer(string key, int horizontal, int vertical)
         {
             //assert 
-            var _player = new Mock<IPlayer>();
+            var _player = new Mock<IPlayerManager>();
             var _settings = new Mock<Settings>();
 
-            _controls = new Controls(_player.Object, _settings.Object);
+            var _controls = new Controls(_player.Object, _settings.Object);
 
             int amount = _settings.Object.MOVEMENT_DISTANCE;
 
@@ -30,6 +33,25 @@ namespace KjellBlazorDemo.EngineTests
             _player.Verify(x => x.MoveHorizontal(amount), Times.Exactly(horizontal));
             _player.Verify(x => x.MoveVertical(amount), Times.Exactly(vertical));
         }
+
+        [Fact]
+        public void DontAllowMoveOffscreen()
+        {
+            //setup a real player object
+            var Player = new PlayerManager();
+            var Settings = new Settings();
+            var Controls = new Controls(Player, Settings);
+
+            //act
+            for (int i = 0; i < 50; i++)
+            {
+                Controls.KeyDown("ArrowLeft");
+            }
+
+            //assert
+            Assert.True(Player.PositionLeft > Settings.MIN_X);
+        }
+
 
     }
 }

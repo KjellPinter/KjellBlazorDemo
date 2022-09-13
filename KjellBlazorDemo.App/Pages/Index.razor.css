@@ -27,6 +27,7 @@
     position: absolute;
     top: 0rem;
     left: 0rem;
+    width: 100%;
 }
 
     #Menu ul {
@@ -42,5 +43,11 @@
             width: 100px;
             color: white;
         }
+
+            #Menu ul li:last-child {
+                width: 200px;
+                right: 0;
+                float: right;
+            }
 
 

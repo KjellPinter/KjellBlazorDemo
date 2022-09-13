@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KjellBlazorDemo.Engine.Interfaces
 {
-    public interface IPlayer
+    public interface IPlayerManager
     {
         public int PositionTop { get; set;  }
         public int PositionLeft { get; set;  }
