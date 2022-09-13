@@ -9,7 +9,7 @@ namespace KjellBlazorDemo.App.Components
     {
         public bool ShowDialog { get; set; }
 
-        public Engine.Settings settings = new Engine.Settings();
+        public Engine.Settings settings = Engine.Settings.Instance;
 
         public List<Character> Characters = new List<Character>();
         

@@ -17,7 +17,7 @@ namespace KjellBlazorDemo.EngineTests
         public PlayerManagerTests()
         {
             _player = new PlayerManager();
-            _settings = new Settings();
+            _settings = Engine.Settings.Instance;
         }
 
         [Fact]

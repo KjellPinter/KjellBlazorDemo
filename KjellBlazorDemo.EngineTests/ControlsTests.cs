@@ -20,11 +20,11 @@ namespace KjellBlazorDemo.EngineTests
         {
             //assert 
             var _player = new Mock<IPlayerManager>();
-            var _settings = new Mock<Settings>();
+            var _settings = Settings.Instance;
 
-            var _controls = new Controls(_player.Object, _settings.Object);
+            var _controls = new Controls(_player.Object, _settings);
 
-            int amount = _settings.Object.MOVEMENT_DISTANCE;
+            int amount = _settings.MOVEMENT_DISTANCE;
 
             if (key == "ArrowLeft" || key == "ArrowUp")
             {
@@ -35,8 +35,8 @@ namespace KjellBlazorDemo.EngineTests
             _controls.KeyDown(key);
 
             //assert
-            _player.Verify(x => x.MoveHorizontal(amount, _settings.Object.MIN_X, _settings.Object.MAX_X), Times.Exactly(horizontal));
-            _player.Verify(x => x.MoveVertical(amount, _settings.Object.MIN_Y, _settings.Object.MAX_Y), Times.Exactly(vertical));
+            _player.Verify(x => x.MoveHorizontal(amount, _settings.MIN_X, _settings.MAX_X), Times.Exactly(horizontal));
+            _player.Verify(x => x.MoveVertical(amount, _settings.MIN_Y, _settings.MAX_Y), Times.Exactly(vertical));
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace KjellBlazorDemo.EngineTests
         {
             //setup a real player object
             var Player = new PlayerManager();
-            var Settings = new Settings();
+            var Settings = Engine.Settings.Instance;
             var Controls = new Controls(Player, Settings);
 
             //act
