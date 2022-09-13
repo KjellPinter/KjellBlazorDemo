@@ -26,6 +26,11 @@ namespace KjellBlazorDemo.EngineTests
 
             int amount = _settings.Object.MOVEMENT_DISTANCE;
 
+            if (key == "ArrowLeft" || key == "ArrowUp")
+            {
+                amount = -amount;
+            }
+
             //act
             _controls.KeyDown(key);
 
