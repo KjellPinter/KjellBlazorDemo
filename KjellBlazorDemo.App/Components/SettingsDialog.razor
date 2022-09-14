@@ -10,7 +10,7 @@
 
     public void SaveChanges()
     {
-        Player.Character = Characters[settings.CHARACTER -1];            
+        Player.Character = Characters[settings.CHARACTER -1];          
         ShowDialog = false;
         StateHasChanged();
     }
@@ -47,8 +47,7 @@
                         <label>Character</label>
                     </div>
                     <div class="col-sm">
-                        <select class="form-control" @bind="@settings.CHARACTER">
-                        <option value=""></option>
+                        <select id="selectCharacter" class="form-control" @bind="@settings.CHARACTER">
                             @foreach(var c in Characters)
                             {
                                 <option value = "@c.Id"> @c.Name </option >
