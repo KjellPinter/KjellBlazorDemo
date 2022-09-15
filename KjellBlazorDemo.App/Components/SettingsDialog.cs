@@ -9,8 +9,6 @@ namespace KjellBlazorDemo.App.Components
     {
         public bool ShowDialog { get; set; }
 
-        public Engine.Settings settings = new Engine.Settings();
-
         public List<Character> Characters = new List<Character>();
         
         public SettingsDialog()
@@ -24,7 +22,12 @@ namespace KjellBlazorDemo.App.Components
             Characters = await Http.GetFromJsonAsync<List<Character>>("Data/Characters.json");
         }
 
-
+        public void SaveChanges()
+        {
+            Player.Character = Characters[settings.CHARACTER - 1];
+            ShowDialog = false;
+            StateHasChanged();
+        }
 
 
         public void Close()

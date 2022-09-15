@@ -4,18 +4,8 @@
 @using KjellBlazorDemo.App.Components
 @inject HttpClient Http
 @inject IPlayerManager Player
+@inject Settings settings
 
-@functions {
-     
-
-    public void SaveChanges()
-    {
-        Player.Character = Characters[settings.CHARACTER -1];          
-        ShowDialog = false;
-        StateHasChanged();
-    }
-
-}
 
 @if (ShowDialog)
 {
