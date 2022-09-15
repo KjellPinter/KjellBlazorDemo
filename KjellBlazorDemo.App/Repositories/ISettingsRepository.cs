@@ -1,10 +1,11 @@
-﻿using System;
+﻿using KjellBlazorDemo.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KjellBlazorDemo.Engine.Repositories
+namespace KjellBlazorDemo.App.Repositories
 {
     internal interface ISettingsRepository
     {

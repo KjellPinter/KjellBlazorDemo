@@ -1,4 +1,5 @@
 using KjellBlazorDemo.App;
+using KjellBlazorDemo.App.Repositories;
 using KjellBlazorDemo.Engine;
 using KjellBlazorDemo.Engine.Interfaces;
 using Microsoft.AspNetCore.Components.Web;
@@ -14,5 +15,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddSingleton<IPlayerManager, PlayerManager>();
 builder.Services.AddSingleton<IControls, Controls>();
 builder.Services.AddSingleton<Settings>();
+builder.Services.AddSingleton<SettingsRepository>();
+
+
 
 await builder.Build().RunAsync();

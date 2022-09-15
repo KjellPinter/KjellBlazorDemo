@@ -1,20 +1,22 @@
-﻿using System;
+﻿using KjellBlazorDemo.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KjellBlazorDemo.Engine.Repositories
+namespace KjellBlazorDemo.App.Repositories
 {
-    internal class SettingsRepository : ISettingsRepository
+    public class SettingsRepository : ISettingsRepository
     {
         public Settings GetSettings()
         {
-            throw new NotImplementedException();
+            return new Settings();
         }
 
         public void SaveSettings(Settings settings)
         {
+            //JsonFileUtils.WriteFile(settings, @"c:\temp\Settings.json");
             throw new NotImplementedException();
         }
     }

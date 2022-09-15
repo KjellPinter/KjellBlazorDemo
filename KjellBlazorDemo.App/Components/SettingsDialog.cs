@@ -26,6 +26,7 @@ namespace KjellBlazorDemo.App.Components
         {
             Player.Character = Characters[settings.CHARACTER - 1];
             ShowDialog = false;
+            //settingsRepo.SaveSettings(settings);
             StateHasChanged();
         }
 
