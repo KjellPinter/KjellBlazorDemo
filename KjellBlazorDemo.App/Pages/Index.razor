@@ -31,41 +31,4 @@
 
 <SettingsDialog @ref="SettingsDialog"></SettingsDialog>
 
-@code {
 
-    private ElementReference mainDiv;
-    private Timer? _timer;
-
-    private void HandleKeyDown(KeyboardEventArgs a) {
-        Controls.KeyDown(a.Code); 
-    }
-
-    protected override async Task OnAfterRenderAsync(bool first)
-    {
-        if (first)
-        {
-            await mainDiv.FocusAsync();
-        }
-    }
-
-    protected override Task OnInitializedAsync()
-    {
-        _timer = new Timer();
-        _timer.Interval = 20;
-        _timer.Elapsed += TimerElapsed;
-        _timer.AutoReset = true;
-        _timer.Enabled = true;
-
-        return base.OnInitializedAsync();
-    }
-
-    private void TimerElapsed(Object? source, ElapsedEventArgs a)
-    {
-        Redraw();
-    }
-
-    private void Redraw()
-    {
-        this.StateHasChanged();
-    }
-}
