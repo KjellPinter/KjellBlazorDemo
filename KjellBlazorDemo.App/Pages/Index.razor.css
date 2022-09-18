@@ -11,7 +11,7 @@
 
 .trash {
     background-image: url(Images/Assetts/littered_dungeon.png);
-    position: relative;
+    position: absolute;
     width: 32px;
     height: 32px;
     background-position: -0px -64px;
@@ -37,7 +37,7 @@
     width: 30px;
     height: 32px;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     background-position: -22px -65px;
 }
 

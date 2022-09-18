@@ -12,7 +12,6 @@ namespace KjellBlazorDemo.App.Pages
         //[Inject]
 
         protected SettingsDialog SettingsDialog { get; set; }
-        //protected PlayerComponent PlayerComponent { get; set; }
 
         protected List<Trash> TrashList { get; set; }
 
@@ -72,7 +71,22 @@ namespace KjellBlazorDemo.App.Pages
 
         private void Redraw()
         {
+            CollisionDetect();
             this.StateHasChanged();
+        }
+
+        private void CollisionDetect()
+        {
+            var cols = TrashList.Where(o => o.Left > (Player.PositionLeft - 2) && o.Left < (Player.PositionLeft) + 30
+                            && o.Top > (Player.PositionTop - 2) && o.Top < (Player.PositionTop) + 30).ToList();
+
+            if (cols.Count() > 0)
+            {
+                foreach (var c in cols)
+                {
+                    TrashList.Remove(c);
+                }
+            }
         }
 
         public void ShowSettings()
