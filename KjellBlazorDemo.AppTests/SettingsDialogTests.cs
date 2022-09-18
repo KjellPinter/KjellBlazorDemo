@@ -13,19 +13,21 @@ namespace KjellBlazorDemo.AppTests
     {
 
         [Fact]
-        public void SettingsPopulate()
+        public void SettingsDialogOpensAndPopulates()
         {
             // arrange
             var ctx = new TestContext();
 
             ctx.Services.AddMockHttpClient();
             ctx.Services.AddSingleton<IPlayerManager, PlayerManager>();
+            ctx.Services.AddSingleton<IControls, Controls>();
             ctx.Services.AddSingleton<Settings>();
 
             var sets = new Settings();
 
             // act            
-            var comp = ctx.RenderComponent<SettingsDialog>();
+            var comp = ctx.RenderComponent<App.Pages.Index>();
+            comp.Find("#settingsMenuItem").Click();
             var distance = comp.Find("#MOVEMENT_DISTANCE");
             var charsel = comp.Find("#selectCharacter");
 
