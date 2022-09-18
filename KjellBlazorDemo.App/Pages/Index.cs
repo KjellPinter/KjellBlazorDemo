@@ -1,4 +1,5 @@
 ﻿using KjellBlazorDemo.App.Components;
+using KjellBlazorDemo.App.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
@@ -11,7 +12,9 @@ namespace KjellBlazorDemo.App.Pages
         //[Inject]
 
         protected SettingsDialog SettingsDialog { get; set; }
-        protected PlayerComponent PlayerComponent { get; set; }
+        //protected PlayerComponent PlayerComponent { get; set; }
+
+        protected List<Trash> TrashList { get; set; }
 
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
@@ -19,8 +22,20 @@ namespace KjellBlazorDemo.App.Pages
         public Index()
         {
             SettingsDialog = new SettingsDialog();
-            PlayerComponent = new PlayerComponent();
+
+            //populate trash
+            TrashList = new List<Trash>();
+            var rnd = new Random();
+
+            for(int i = 0; i < 5; i++)
+            {
+                int t = rnd.Next(500);
+                int l = rnd.Next(500);
+                TrashList.Add(new Trash(t, l));
+            }
+
         }
+
 
         private void HandleKeyDown(KeyboardEventArgs a)
         {

@@ -9,6 +9,16 @@
     border-color: transparent;
 }
 
+.trash {
+    background-image: url(Images/Assetts/littered_dungeon.png);
+    /*top: 200px;
+    left: 300px;*/
+    position: relative;
+    width: 32px;
+    height: 32px;
+    background-position: -0px -64px;
+}
+
 #mainDiv {
     outline: none;
     outline-style: none;
