@@ -38,6 +38,12 @@
                     background-position: @(t.offsetX)px @(t.offsetY)px; "></div>
     }
 
+    @foreach (Mob m in Mobs)
+    {
+        <div class="@(m.Name)" style="top: @(m.Top)px; left: @(m.Left)px;
+            background-position: @(m.offsetX)px @(m.offsetY)px; "></div>
+    }
+
 </div>
 
 <SettingsDialog @ref="SettingsDialog"></SettingsDialog>

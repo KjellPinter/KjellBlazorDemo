@@ -15,6 +15,7 @@ namespace KjellBlazorDemo.App.Pages
         protected MessageDialog MessageDialog { get; set; }
 
         protected List<Trash> TrashList { get; set; }
+        protected List<Mob> Mobs { get; set; }
 
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
@@ -25,6 +26,10 @@ namespace KjellBlazorDemo.App.Pages
             MessageDialog = new MessageDialog();
 
             PopulateTrash(5);
+
+            //hardcode troll for testing
+            Mobs = new List<Mob>();
+            Mobs.Add(new Mob("troll"));
         }
 
         private void PopulateTrash(int amount)

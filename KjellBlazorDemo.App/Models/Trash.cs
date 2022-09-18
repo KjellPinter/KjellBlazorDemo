@@ -1,12 +1,7 @@
 ﻿namespace KjellBlazorDemo.App.Models
 {
-    public class Trash
+    public class Trash : Asset
     {
-
-        public int Top { get; set; }
-        public int Left { get; set; }
-        public int offsetY { get; set; }
-        public int offsetX { get; set; }
 
         internal Trash(int top, int left)
         {
