@@ -1,0 +1,17 @@
+﻿@using KjellBlazorDemo.Engine.Interfaces
+@inject IPlayerManager Player
+
+<style>
+    .player {
+
+    width: 30px;
+    height: 32px;
+    overflow: hidden;
+    position: relative;    
+    background-position: -22px -65px;
+}
+</style>
+
+<div id="player" class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;
+        background-image: url(@(Player.Character.Sprite)); ">
+    </div>

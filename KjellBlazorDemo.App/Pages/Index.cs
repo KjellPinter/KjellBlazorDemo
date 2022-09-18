@@ -10,6 +10,7 @@ namespace KjellBlazorDemo.App.Pages
         //[Inject]
 
         protected SettingsDialog SettingsDialog { get; set; }
+        protected PlayerComponent PlayerComponent { get; set; }
 
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
@@ -17,6 +18,7 @@ namespace KjellBlazorDemo.App.Pages
         public Index()
         {
             SettingsDialog = new SettingsDialog();
+            PlayerComponent = new PlayerComponent();
         }
 
         private void HandleKeyDown(KeyboardEventArgs a)

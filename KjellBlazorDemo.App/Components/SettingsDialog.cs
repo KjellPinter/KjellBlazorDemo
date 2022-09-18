@@ -14,7 +14,7 @@ namespace KjellBlazorDemo.App.Components
         public SettingsDialog()
         {
             //we set this to true for unit testing 
-            ShowDialog = true;
+            //ShowDialog = true;
         }
 
         protected override async Task OnInitializedAsync()

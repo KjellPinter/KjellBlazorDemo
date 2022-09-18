@@ -13,15 +13,6 @@
     height: 100vw;
 }
 
-.player {
-
-    width: 30px;
-    height: 32px;
-    overflow: hidden;
-    position: relative;    
-    background-position: -22px -65px;
-}
-
 #Menu {
     background-color: rgb(89, 83, 83);
     position: absolute;
