@@ -1,0 +1,43 @@
+﻿
+
+
+@if (ShowDialog)
+{
+<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow" style="padding-bottom: 5px">
+      
+        <div class="modal-header p-1 r pb-3 border-bottom-0">       
+            @Message
+      </div>
+
+      <div style="margin: .5rem;">
+        <button type="button" @onclick="@Close" class="btn btn-secondary" style="float: right; margin-right: 5px">Close</button>                
+    </div>  
+
+    </div>
+  </div>
+</div>
+}
+
+
+
+
+@code {
+    public bool ShowDialog = false;
+    public string Message = "default message";
+
+    public void Close()
+    {
+        ShowDialog = false;
+        StateHasChanged();
+    }
+
+    public void Show(string message)
+    {
+        Message = message;
+        ShowDialog = true;
+        StateHasChanged();
+    }
+
+}

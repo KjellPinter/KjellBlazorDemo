@@ -12,6 +12,7 @@ namespace KjellBlazorDemo.App.Pages
         //[Inject]
 
         protected SettingsDialog SettingsDialog { get; set; }
+        protected MessageDialog MessageDialog { get; set; }
 
         protected List<Trash> TrashList { get; set; }
 
@@ -21,20 +22,23 @@ namespace KjellBlazorDemo.App.Pages
         public Index()
         {
             SettingsDialog = new SettingsDialog();
+            MessageDialog = new MessageDialog();
 
-            //populate trash
+            PopulateTrash(5);
+        }
+
+        private void PopulateTrash(int amount)
+        {
             TrashList = new List<Trash>();
             var rnd = new Random();
 
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < amount; i++)
             {
                 int t = rnd.Next(500);
                 int l = rnd.Next(500);
                 TrashList.Add(new Trash(t, l));
             }
-
         }
-
 
         private void HandleKeyDown(KeyboardEventArgs a)
         {
@@ -77,8 +81,8 @@ namespace KjellBlazorDemo.App.Pages
 
         private void CollisionDetect()
         {
-            var cols = TrashList.Where(o => o.Left > (Player.PositionLeft - 2) && o.Left < (Player.PositionLeft) + 30
-                            && o.Top > (Player.PositionTop - 2) && o.Top < (Player.PositionTop) + 30).ToList();
+            var cols = TrashList.Where(o => o.Left > (Player.PositionLeft - 34) && o.Left < (Player.PositionLeft) + 2
+                            && o.Top > (Player.PositionTop - 34) && o.Top < (Player.PositionTop) + 2).ToList();
 
             if (cols.Count() > 0)
             {
@@ -87,8 +91,18 @@ namespace KjellBlazorDemo.App.Pages
                     TrashList.Remove(c);
                 }
             }
+
+            if (TrashList.Count() == 0)
+            {
+                MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
+                PopulateTrash(10);
+            }
         }
 
+        public void ShowAbout()
+        {
+            MessageDialog.Show("This is a project for me to play in and learn.");
+        }
         public void ShowSettings()
         {
             SettingsDialog.Show();

@@ -14,7 +14,7 @@
     <ul>
         <li>File</li>
         <li id="settingsMenuItem" @onclick="ShowSettings">Settings</li>
-        <li>About</li>
+        <li @onclick="ShowAbout">About</li>
         <li>@(Player.ToString())</li>
     </ul>    
 </div>
@@ -41,6 +41,8 @@
 </div>
 
 <SettingsDialog @ref="SettingsDialog"></SettingsDialog>
+
+<MessageDialog @ref="MessageDialog"></MessageDialog>
 
 
 
