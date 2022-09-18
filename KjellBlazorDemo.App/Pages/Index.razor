@@ -34,7 +34,8 @@
 
     @foreach (Trash t in TrashList)
     {
-        <div class="trash" style="top: @(t.Top)px; left: @(t.Left)px;"></div>
+        <div class="trash" style="top: @(t.Top)px; left: @(t.Left)px;
+                    background-position: @(t.offsetX)px @(t.offsetY)px; "></div>
     }
 
 </div>
