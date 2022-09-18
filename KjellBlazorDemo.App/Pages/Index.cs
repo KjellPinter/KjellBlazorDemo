@@ -1,6 +1,7 @@
 ﻿using KjellBlazorDemo.App.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 using System.Timers;
 
 namespace KjellBlazorDemo.App.Pages
@@ -28,10 +29,14 @@ namespace KjellBlazorDemo.App.Pages
 
         protected override async Task OnAfterRenderAsync(bool first)
         {
-            if (first)
+            //removeing default "first" check as focus is continually getting set elsewhere, like on window
+            if (!SettingsDialog.ShowDialog)
             {
                 await mainDiv.FocusAsync();
+                await JsRunTime.InvokeVoidAsync("OnScrollEvent");
             }
+           
+            
         }
 
         protected override Task OnInitializedAsync()
