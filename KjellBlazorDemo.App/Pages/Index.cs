@@ -81,6 +81,8 @@ namespace KjellBlazorDemo.App.Pages
         private void Redraw()
         {
             CollisionDetect();
+
+
             this.StateHasChanged();
         }
 
@@ -89,11 +91,40 @@ namespace KjellBlazorDemo.App.Pages
             var cols = AssetList.Where(o => o.Left > (Player.PositionLeft - 34) && o.Left < (Player.PositionLeft) + 2
                             && o.Top > (Player.PositionTop - 34) && o.Top < (Player.PositionTop) + 2).ToList();
 
+            Mob troll = (Mob)AssetList.Where(o => o.Name == "troll").FirstOrDefault();
+
             if (cols.Count() > 0)
             {
+                //test mob attack
+                troll.IsAttacking = true;
+
                 foreach (var c in cols)
                 {
                     AssetList.Remove(c);
+                }
+            }
+
+            //mob attack test - todo: refactor all the troll stuff in this method
+            if (troll.IsAttacking)
+            {
+                if (troll.Top < Player.PositionTop)
+                {
+                    ++troll.Top;
+                }
+
+                if (troll.Top > Player.PositionTop)
+                {
+                    --troll.Top;
+                }
+
+                if (troll.Left < Player.PositionLeft)
+                {
+                    ++troll.Left;
+                }
+
+                if (troll.Left > Player.PositionLeft)
+                {
+                    --troll.Left;
                 }
             }
 
