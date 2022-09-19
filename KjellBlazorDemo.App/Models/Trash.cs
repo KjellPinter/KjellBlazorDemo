@@ -10,6 +10,8 @@
 
             offsetY = -64;
 
+            Name = "trash";
+
             var rnd = new Random();
             var roll = rnd.Next(3);
 

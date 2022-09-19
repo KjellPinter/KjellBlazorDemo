@@ -14,7 +14,7 @@ namespace KjellBlazorDemo.App.Pages
         protected SettingsDialog SettingsDialog { get; set; }
         protected MessageDialog MessageDialog { get; set; }
 
-        protected List<Trash> TrashList { get; set; }
+        protected List<Asset> AssetList { get; set; }
         protected List<Mob> Mobs { get; set; }
 
         private ElementReference mainDiv;
@@ -25,23 +25,23 @@ namespace KjellBlazorDemo.App.Pages
             SettingsDialog = new SettingsDialog();
             MessageDialog = new MessageDialog();
 
-            PopulateTrash(5);
+            
+            AssetList = new List<Asset>();
+            AssetList.Add(new Mob("troll"));
 
-            //hardcode troll for testing
-            Mobs = new List<Mob>();
-            Mobs.Add(new Mob("troll"));
+            PopulateTrash(5);
         }
 
         private void PopulateTrash(int amount)
         {
-            TrashList = new List<Trash>();
+            
             var rnd = new Random();
 
             for (int i = 0; i < amount; i++)
             {
                 int t = rnd.Next(500);
                 int l = rnd.Next(500);
-                TrashList.Add(new Trash(t, l));
+                AssetList.Add(new Trash(t, l));
             }
         }
 
@@ -86,18 +86,18 @@ namespace KjellBlazorDemo.App.Pages
 
         private void CollisionDetect()
         {
-            var cols = TrashList.Where(o => o.Left > (Player.PositionLeft - 34) && o.Left < (Player.PositionLeft) + 2
+            var cols = AssetList.Where(o => o.Left > (Player.PositionLeft - 34) && o.Left < (Player.PositionLeft) + 2
                             && o.Top > (Player.PositionTop - 34) && o.Top < (Player.PositionTop) + 2).ToList();
 
             if (cols.Count() > 0)
             {
                 foreach (var c in cols)
                 {
-                    TrashList.Remove(c);
+                    AssetList.Remove(c);
                 }
             }
 
-            if (TrashList.Count() == 0)
+            if (AssetList.Where(o => o.Name == "trash").Count() == 0)
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
                 PopulateTrash(10);
