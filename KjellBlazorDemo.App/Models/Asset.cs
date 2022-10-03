@@ -1,6 +1,6 @@
 ﻿namespace KjellBlazorDemo.App.Models
 {
-    public class Asset
+    abstract public class Asset
     {
         public string? Name { get; set; }
         public int Top { get; set; }

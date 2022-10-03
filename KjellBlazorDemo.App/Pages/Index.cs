@@ -13,9 +13,10 @@ namespace KjellBlazorDemo.App.Pages
 
         protected SettingsDialog SettingsDialog { get; set; }
         protected MessageDialog MessageDialog { get; set; }
+        protected DecisionDialog DecisionDialog { get; set; }
 
         protected List<Asset> AssetList { get; set; }
-        protected List<Mob> Mobs { get; set; }
+        //protected List<Mob>? Mobs { get; set; }
 
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
@@ -24,8 +25,8 @@ namespace KjellBlazorDemo.App.Pages
         {
             SettingsDialog = new SettingsDialog();
             MessageDialog = new MessageDialog();
+            DecisionDialog = new DecisionDialog();
 
-            
             AssetList = new List<Asset>();
             AssetList.Add(new Mob("troll"));
 
