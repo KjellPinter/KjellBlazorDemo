@@ -1,4 +1,5 @@
 ﻿using KjellBlazorDemo.App.Components;
+using KjellBlazorDemo.App.Logic;
 using KjellBlazorDemo.App.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -15,6 +16,8 @@ namespace KjellBlazorDemo.App.Pages
         protected MessageDialog MessageDialog { get; set; }
         protected DecisionDialog DecisionDialog { get; set; }
 
+        private Interactions Interactions { get; set; }
+
         protected List<Asset> AssetList { get; set; }
 
         private ElementReference mainDiv;
@@ -25,6 +28,7 @@ namespace KjellBlazorDemo.App.Pages
             SettingsDialog = new SettingsDialog();
             MessageDialog = new MessageDialog();
             DecisionDialog = new DecisionDialog();
+            Interactions = new Interactions();
 
             AssetList = new List<Asset>();
             AssetList.Add(new Mob("troll"));
@@ -80,60 +84,17 @@ namespace KjellBlazorDemo.App.Pages
 
         private void Redraw()
         {
-            CollisionDetect();
-
-
-            this.StateHasChanged();
-        }
-
-        private void CollisionDetect()
-        {
-            var cols = AssetList.Where(o => o.Left > (Player.PositionLeft - 34) && o.Left < (Player.PositionLeft) + 2
-                            && o.Top > (Player.PositionTop - 34) && o.Top < (Player.PositionTop) + 2).ToList();
-
-            Mob troll = (Mob)AssetList.Where(o => o.Name == "troll").FirstOrDefault();
-
-            if (cols.Count() > 0)
-            {
-                //test mob attack
-                troll.IsAttacking = true;
-
-                foreach (var c in cols)
-                {
-                    AssetList.Remove(c);
-                }
-            }
-
-            //mob attack test - todo: refactor all the troll stuff in this method
-            if (troll.IsAttacking)
-            {
-                if (troll.Top < Player.PositionTop)
-                {
-                    ++troll.Top;
-                }
-
-                if (troll.Top > Player.PositionTop)
-                {
-                    --troll.Top;
-                }
-
-                if (troll.Left < Player.PositionLeft)
-                {
-                    ++troll.Left;
-                }
-
-                if (troll.Left > Player.PositionLeft)
-                {
-                    --troll.Left;
-                }
-            }
+            Interactions.CollisionDetect(AssetList, Player);
 
             if (AssetList.Where(o => o.Name == "trash").Count() == 0)
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
-                PopulateTrash(10);
             }
+
+            this.StateHasChanged();
         }
+
+        
 
         public void ShowAbout()
         {

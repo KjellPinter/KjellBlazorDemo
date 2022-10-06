@@ -32,8 +32,8 @@ namespace KjellBlazorDemo.AppTests
             var charsel = comp.Find("#selectCharacter");
 
             // assert
-            Assert.Equal(distance.GetAttribute("value").ToString(), sets.MOVEMENT_DISTANCE.ToString());
-            Assert.Equal(charsel.GetAttribute("value").ToString(), sets.CHARACTER.ToString());
+            Assert.Equal(distance.GetAttribute("value")!.ToString(), sets.MOVEMENT_DISTANCE.ToString());
+            Assert.Equal(charsel.GetAttribute("value")!.ToString(), sets.CHARACTER.ToString());
 
         }
     }
