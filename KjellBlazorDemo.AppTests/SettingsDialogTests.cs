@@ -17,6 +17,7 @@ namespace KjellBlazorDemo.AppTests
         {
             // arrange
             var ctx = new TestContext();
+            ctx.JSInterop.Mode = JSRuntimeMode.Loose;
 
             ctx.Services.AddMockHttpClient();
             ctx.Services.AddSingleton<IPlayerManager, PlayerManager>();
