@@ -12,9 +12,9 @@ namespace KjellBlazorDemo.App.Pages
     {
         //[Inject]
 
-        protected SettingsDialog SettingsDialog { get; set; }
-        protected MessageDialog MessageDialog { get; set; }
-        protected DecisionDialog DecisionDialog { get; set; }
+        private SettingsDialog SettingsDialog { get; set; }
+        private MessageDialog MessageDialog { get; set; }
+        private DecisionDialog DecisionDialog { get; set; }
 
         private Interactions Interactions { get; set; }
 
@@ -41,7 +41,7 @@ namespace KjellBlazorDemo.App.Pages
             PopulateTrash(5);
         }
 
-        private void PopulateTrash(int amount)
+        internal void PopulateTrash(int amount)
         {
             
             var rnd = new Random();
