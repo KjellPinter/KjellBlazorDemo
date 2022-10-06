@@ -7,45 +7,51 @@ namespace KjellBlazorDemo.App.Logic
     public class Interactions
     {
 
+        private IPlayerManager _player = null!;
+        private List<Asset> _assetList = null!;
+
         internal void CollisionDetect(List<Asset> AssetList, IPlayerManager Player)
         {
-            var cols = AssetList.Where(o => o.Left > (Player.PositionLeft - 34) && o.Left < (Player.PositionLeft) + 2
-                            && o.Top > (Player.PositionTop - 34) && o.Top < (Player.PositionTop) + 2).ToList();
+            _player = Player;
+            _assetList = AssetList;
 
-            Mob? troll = (Mob?)AssetList.Where(o => o.Name == "troll").FirstOrDefault();
+            RemoveTrashWhichTouchesPlayer();
+            MoveMobTowardsPlayer();
+        }
 
-            if (troll is not null)
+        internal void RemoveTrashWhichTouchesPlayer()
+        {
+            var cols = _assetList.Where(o => o.Left > (_player.PositionLeft - 34) && o.Left < (_player.PositionLeft) + 2
+                            && o.Top > (_player.PositionTop - 34) && o.Top < (_player.PositionTop) + 2).ToList();
+
+            foreach (var c in cols)
             {
-                troll.IsAttacking = true;
-                MoveMobTowardsPlayer(troll, Player);
-
-                foreach (var c in cols)
-                {
-                    AssetList.Remove(c);
-                }
+                _assetList.Remove(c);
             }
         }
 
-        internal void MoveMobTowardsPlayer(Mob mob, IPlayerManager Player)
+        internal void MoveMobTowardsPlayer()
         {
-            if (mob.IsAttacking)
+            Mob? mob = (Mob?)_assetList.Where(o => o.GetType() == typeof(Mob)).FirstOrDefault();
+
+            if (mob is not null)
             {
-                if (mob.Top < Player.PositionTop)
+                if (mob.Top < _player.PositionTop)
                 {
                     ++mob.Top;
                 }
 
-                if (mob.Top > Player.PositionTop)
+                if (mob.Top > _player.PositionTop)
                 {
                     --mob.Top;
                 }
 
-                if (mob.Left < Player.PositionLeft)
+                if (mob.Left < _player.PositionLeft)
                 {
                     ++mob.Left;
                 }
 
-                if (mob.Left > Player.PositionLeft)
+                if (mob.Left > _player.PositionLeft)
                 {
                     --mob.Left;
                 }
