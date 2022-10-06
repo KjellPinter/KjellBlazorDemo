@@ -16,7 +16,6 @@ namespace KjellBlazorDemo.App.Pages
         protected DecisionDialog DecisionDialog { get; set; }
 
         protected List<Asset> AssetList { get; set; }
-        //protected List<Mob>? Mobs { get; set; }
 
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
