@@ -18,7 +18,7 @@ namespace KjellBlazorDemo.App.Pages
 
         private Interactions Interactions { get; set; }
 
-        protected List<Asset> AssetList { get; set; }
+        private List<Asset> AssetList = new List<Asset>();
 
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
@@ -30,6 +30,11 @@ namespace KjellBlazorDemo.App.Pages
             DecisionDialog = new DecisionDialog();
             Interactions = new Interactions();
 
+            GameSetup();
+        }
+
+        internal void GameSetup()
+        {
             AssetList = new List<Asset>();
             AssetList.Add(new Mob("troll"));
 
@@ -89,7 +94,10 @@ namespace KjellBlazorDemo.App.Pages
             if (AssetList.Where(o => o.Name == "trash").Count() == 0)
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
+
+                GameSetup();
             }
+
 
             this.StateHasChanged();
         }
@@ -98,7 +106,7 @@ namespace KjellBlazorDemo.App.Pages
 
         public void ShowAbout()
         {
-            MessageDialog.Show("This is a project for me to play in and learn.");
+            MessageDialog.Show("This is a project for me to play in and learn. All the art is from opengameart.org. ");
         }
         public void ShowSettings()
         {
