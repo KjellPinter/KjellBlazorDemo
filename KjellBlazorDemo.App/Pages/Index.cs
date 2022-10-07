@@ -16,8 +16,8 @@ namespace KjellBlazorDemo.App.Pages
         private MessageDialog MessageDialog { get; set; }
         private DecisionDialog DecisionDialog { get; set; }
 
-        private Interactions Interactions { get; set; }
-
+        private Interactions Interactions = new Interactions();
+        private AssetManager AssetManager = new AssetManager();
         private List<Asset> AssetList = new List<Asset>();
 
         private ElementReference mainDiv;
@@ -28,31 +28,9 @@ namespace KjellBlazorDemo.App.Pages
             SettingsDialog = new SettingsDialog();
             MessageDialog = new MessageDialog();
             DecisionDialog = new DecisionDialog();
-            Interactions = new Interactions();
-
-            GameSetup();
+            AssetManager.ResetAssets(AssetList);
         }
 
-        internal void GameSetup()
-        {
-            AssetList = new List<Asset>();
-            AssetList.Add(new Mob("troll"));
-
-            PopulateTrash(5);
-        }
-
-        internal void PopulateTrash(int amount)
-        {
-            
-            var rnd = new Random();
-
-            for (int i = 0; i < amount; i++)
-            {
-                int t = rnd.Next(500);
-                int l = rnd.Next(500);
-                AssetList.Add(new Trash(t, l));
-            }
-        }
 
         private void HandleKeyDown(KeyboardEventArgs a)
         {
@@ -94,8 +72,7 @@ namespace KjellBlazorDemo.App.Pages
             if (AssetList.Where(o => o.Name == "trash").Count() == 0)
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
-
-                GameSetup();
+                AssetManager.ResetAssets(AssetList);
             }
 
 
