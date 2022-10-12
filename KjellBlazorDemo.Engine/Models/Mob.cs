@@ -12,7 +12,9 @@
         {
             Name = name;
             offsetX = -8;
-            offsetY = -2;
+            offsetY = -3;
+            Width = 25;
+            Height = 25;
             CycleCounter = 0;
         }
 

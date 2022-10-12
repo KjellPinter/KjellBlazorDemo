@@ -16,7 +16,9 @@ namespace KjellBlazorDemo.Engine.Models
 
         public Character()
         {
-            Id = 0;
+            Id = 1;
+            Width = 20;
+            Height = 30;
             Name = "Fighter";
             offsetY = -69;
             offsetX = -26; //-22 char is to far right

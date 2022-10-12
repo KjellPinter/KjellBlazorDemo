@@ -3,7 +3,9 @@
 }
 
 .page {
-    position: relative;
+    position: absolute;
+    height: 100vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
 }

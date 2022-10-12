@@ -34,12 +34,15 @@
     <PlayerComponent @ref="PlayerComponent"></PlayerComponent>-->
 
     <div id="player" class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;
-        background-image: url(@(Player.Character.Sprite)); background-position: @(Player.Character.offsetX)px @(Player.Character.offsetY)px;">
+        background-image: url(@(Player.Character.Sprite)); 
+        background-position: @(Player.Character.offsetX)px @(Player.Character.offsetY)px;
+        height: @(Player.Character.Height)px; width: @(Player.Character.Width)px;">
     </div>
 
     @foreach (var t in AssetList)
     {
         <div class="@(t.Name)" style="top: @(t.Top)px; left: @(t.Left)px;
+                    height: @(t.Height)px; width: @(t.Width)px;
                     background-position: @(t.offsetX)px @(t.offsetY)px; "></div>
     }
 

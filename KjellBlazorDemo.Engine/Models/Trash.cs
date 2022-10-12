@@ -8,6 +8,9 @@
             Top = top;
             Left = left;
 
+            Width = 20;
+            Height = 21;
+
             offsetY = -72;
 
             Name = "trash";

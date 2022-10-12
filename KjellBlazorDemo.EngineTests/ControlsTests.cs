@@ -59,8 +59,8 @@ namespace KjellBlazorDemo.EngineTests
             }
 
             //assert
-            Assert.True(Player.PositionLeft > Settings.MIN_X);
-            Assert.True(Player.PositionTop > Settings.MIN_Y);
+            Assert.True(Player.PositionLeft >= Settings.MIN_X);
+            Assert.True(Player.PositionTop >= Settings.MIN_Y);
         }
 
 

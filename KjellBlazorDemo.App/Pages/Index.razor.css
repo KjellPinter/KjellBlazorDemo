@@ -1,6 +1,5 @@
 ﻿body {
-    /* TODO */
-    zoom: 200%;
+    overflow: hidden;
 }
 
 
@@ -14,17 +13,11 @@
 .trash {
     background-image: url(Images/Assetts/littered_dungeon.png);
     position: absolute;
-    width: 20px;
-    height: 21px;
-    /*border: 1px solid red;*/
 }
 
 .troll {
     background-image: url(Images/Mobs/Ogre-All.png);
     position: absolute;
-    width: 32px;
-    height: 32px;
-    /*background-position: -0px -64px;*/
 }
 
 #mainDiv {
@@ -35,17 +28,16 @@
     background-image: url("Images/GrassTile1124x1124.png");
     background-color: #cccccc;
     /*lazy way to make it look higher res [TODO]*/
-    background-size: 150px;
+    background-size: 100px;
     position: absolute;
     top: 1.5rem;
     left: 0px;
-    width: 200vw;
-    height: 200vw;
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
 }
 
 .player {
-    width: 20px;
-    height: 30px;
     overflow: hidden;
     position: absolute;
     /*border: 1px solid red;*/
