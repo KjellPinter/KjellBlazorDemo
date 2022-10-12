@@ -46,7 +46,9 @@ namespace KjellBlazorDemo.App.Logic
             
             if (mob is not null && mob.IsAttacking)
             {
-                
+
+                mob.Animate();
+
                 if (mob.Top < _player.PositionTop)
                 {
                     ++mob.Top;

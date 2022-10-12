@@ -32,25 +32,25 @@ namespace KjellBlazorDemo.Engine.Models
         public void FaceBack()
         {
             offsetY = -5;
-            offsetX = -23;
+            offsetX = offsetX == -2 ? -46 : -2;
         }
 
         public void FaceForward()
         {
             offsetY = -64;
-            offsetX = -23;
+            offsetX = offsetX == -2 ? -46 : -2;
         }
 
         public void FaceLeft()
         {
             offsetY = -100;
-            offsetX = -23;
+            offsetX = offsetX == -2 ? -46 : -2;
         }
 
         public void FaceRight()
         {
             offsetY = -35;
-            offsetX = -23;
+            offsetX = offsetX == -2 ? -46 : -2;
         }
 
     }

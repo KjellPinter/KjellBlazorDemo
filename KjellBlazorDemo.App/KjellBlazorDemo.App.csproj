@@ -7,6 +7,8 @@
     <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <AssemblyName>KjellBlazorDemo.App</AssemblyName>
     <RootNamespace>KjellBlazorDemo.App</RootNamespace>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
+    <PackageIcon>favicon.ico</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\favicon.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="wwwroot\Images\GrassTile1124x1124.png" />
   </ItemGroup>
 

@@ -7,5 +7,6 @@
         public int Left { get; set; }
         public int offsetY { get; set; }
         public int offsetX { get; set; }
+        public string? Sprite { get; set; }
     }
 }
