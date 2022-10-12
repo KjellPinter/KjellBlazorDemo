@@ -1,6 +1,6 @@
 ﻿using KjellBlazorDemo.App.Components;
 using KjellBlazorDemo.App.Logic;
-using KjellBlazorDemo.App.Models;
+using KjellBlazorDemo.Engine.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;

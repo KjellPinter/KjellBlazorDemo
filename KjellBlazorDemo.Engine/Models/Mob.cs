@@ -1,4 +1,4 @@
-﻿namespace KjellBlazorDemo.App.Models
+﻿namespace KjellBlazorDemo.Engine.Models
 {
     public class Mob : Asset
     {

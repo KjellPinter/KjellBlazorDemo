@@ -1,4 +1,4 @@
-﻿using KjellBlazorDemo.App.Models;
+﻿using KjellBlazorDemo.Engine.Models;
 
 namespace KjellBlazorDemo.App.Logic
 {

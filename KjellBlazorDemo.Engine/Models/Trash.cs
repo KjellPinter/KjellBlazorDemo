@@ -1,9 +1,9 @@
-﻿namespace KjellBlazorDemo.App.Models
+﻿namespace KjellBlazorDemo.Engine.Models
 {
     public class Trash : Asset
     {
 
-        internal Trash(int top, int left)
+        public Trash(int top, int left)
         {
             Top = top;
             Left = left;

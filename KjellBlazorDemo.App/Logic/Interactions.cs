@@ -1,4 +1,4 @@
-﻿using KjellBlazorDemo.App.Models;
+﻿using KjellBlazorDemo.Engine.Models;
 using KjellBlazorDemo.Engine;
 using KjellBlazorDemo.Engine.Interfaces;
 
