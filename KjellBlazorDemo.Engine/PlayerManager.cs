@@ -30,6 +30,15 @@ namespace KjellBlazorDemo.Engine
                 amount = 0;
 
             PositionLeft += amount;
+
+            if (amount > 0)
+            {
+                Character.FaceRight();
+            }
+            else
+            {
+                Character.FaceLeft();
+            }
         }
 
         public void MoveVertical(int amount, int minY, int maxY)
@@ -38,6 +47,15 @@ namespace KjellBlazorDemo.Engine
                 amount = 0;
 
             PositionTop += amount;
+
+            if (amount > 0)
+            {
+                Character.FaceForward();
+            }
+            else
+            {
+                Character.FaceBack();
+            }
         }
     }
 }

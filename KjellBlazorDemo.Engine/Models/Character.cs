@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace KjellBlazorDemo.Engine.Models
 {
+    /// <summary>
+    /// This class deal swith character attributes.
+    /// TODO: Move offsets to json file so different sprite sheets can be plugged in
+    /// </summary>
     public class Character
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        //offsets are not implemented yet and are hardcoded in the CSS 
-        //because they are the same for all sprites at the moment
         public int offsetY { get; set; }    
         public int offsetX { get; set; }   
 
@@ -22,11 +24,34 @@ namespace KjellBlazorDemo.Engine.Models
         {
             Id = 0;
             Name = "Fighter";
-            offsetY = -40;
-            offsetX = -64;
+            offsetY = -65;
+            offsetX = -22;
             Sprite = "Images/CharacterSprites/Fighter-F-01.png";
         }
 
-        
+        public void FaceBack()
+        {
+            offsetY = -5;
+            offsetX = -23;
+        }
+
+        public void FaceForward()
+        {
+            offsetY = -64;
+            offsetX = -23;
+        }
+
+        public void FaceLeft()
+        {
+            offsetY = -100;
+            offsetX = -23;
+        }
+
+        public void FaceRight()
+        {
+            offsetY = -35;
+            offsetX = -23;
+        }
+
     }
 }

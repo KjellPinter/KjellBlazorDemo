@@ -33,7 +33,7 @@
     <PlayerComponent @ref="PlayerComponent"></PlayerComponent>-->
 
     <div id="player" class="player" style="top: @(Player.PositionTop)px; left: @(Player.PositionLeft)px;
-        background-image: url(@(Player.Character.Sprite)); ">
+        background-image: url(@(Player.Character.Sprite)); background-position: @(Player.Character.offsetX)px @(Player.Character.offsetY)px;">
     </div>
 
     @foreach (var t in AssetList)
