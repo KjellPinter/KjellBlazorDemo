@@ -2,29 +2,29 @@
   {
     "Id": 1,
     "Name": "Fighter",
-    "offsetY": 2,
-    "offsetX": 1,
+    "offsetY": -65,
+    "offsetX": -22,
     "Sprite": "Images/CharacterSprites/Fighter-M-01.png"
   },
   {
     "Id": 2,
     "Name": "Healer",
-    "offsetY": 2,
-    "offsetX": 1,
+    "offsetY": -65,
+    "offsetX": -22,
     "Sprite": "Images/CharacterSprites/Healer-F-01.png"
   },
   {
     "Id": 3,
     "Name": "Mage",
-    "offsetY": 2,
-    "offsetX": 1,
+    "offsetY": -65,
+    "offsetX": -22,
     "Sprite": "Images/CharacterSprites/Mage-F-01.png"
   },
   {
     "Id": 4,
     "Name": "Ranger",
-    "offsetY": 2,
-    "offsetX": 1,
+    "offsetY": -65,
+    "offsetX": -22,
     "Sprite": "Images/CharacterSprites/Ranger-M-01.png"
   }
 ]

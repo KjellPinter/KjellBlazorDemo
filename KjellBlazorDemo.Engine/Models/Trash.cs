@@ -8,7 +8,7 @@
             Top = top;
             Left = left;
 
-            offsetY = -64;
+            offsetY = -72;
 
             Name = "trash";
 
@@ -18,13 +18,13 @@
             switch (roll)
             {
                 case 0:
-                    offsetX = 0;
+                    offsetX = -7;
                     break;
                 case 1:
-                    offsetX = -32;
+                    offsetX = -39;
                     break;
                 default:
-                    offsetX = -64;
+                    offsetX = -71;
                     break;
             }
         }

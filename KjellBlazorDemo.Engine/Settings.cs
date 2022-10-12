@@ -13,7 +13,7 @@ namespace KjellBlazorDemo.Engine
  
         public Settings()
         {
-            MOVEMENT_DISTANCE = 25;
+            MOVEMENT_DISTANCE = 10;
             CHARACTER = 0;
             MIN_X = 0;
             MAX_X = 400;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KjellBlazorDemo.App.Logic;
-using KjellBlazorDemo.App.Models;
+using KjellBlazorDemo.Engine.Models;
 
 
 namespace KjellBlazorDemo.AppTests.Logic

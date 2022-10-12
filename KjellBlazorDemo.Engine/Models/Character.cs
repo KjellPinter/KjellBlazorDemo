@@ -10,47 +10,41 @@ namespace KjellBlazorDemo.Engine.Models
     /// This class deal swith character attributes.
     /// TODO: Move offsets to json file so different sprite sheets can be plugged in
     /// </summary>
-    public class Character
+    public class Character : Asset
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-
-        public int offsetY { get; set; }    
-        public int offsetX { get; set; }   
-
-        public string Sprite { get; set; }
 
         public Character()
         {
             Id = 0;
             Name = "Fighter";
-            offsetY = -65;
-            offsetX = -22;
+            offsetY = -69;
+            offsetX = -26; //-22 char is to far right
             Sprite = "Images/CharacterSprites/Fighter-F-01.png";
         }
 
         public void FaceBack()
         {
-            offsetY = -5;
-            offsetX = offsetX == -2 ? -46 : -2;
+            offsetY = -6;
+            offsetX = offsetX == -2 ? -52 : -2;
         }
 
         public void FaceForward()
         {
-            offsetY = -64;
-            offsetX = offsetX == -2 ? -46 : -2;
+            offsetY = -69; //64
+            offsetX = offsetX == -2 ? -52 : -2;
         }
 
         public void FaceLeft()
         {
-            offsetY = -100;
-            offsetX = offsetX == -2 ? -46 : -2;
+            offsetY = -101;
+            offsetX = offsetX == -2 ? -52 : -2;
         }
 
         public void FaceRight()
         {
-            offsetY = -35;
-            offsetX = offsetX == -2 ? -46 : -2;
+            offsetY = -37;
+            offsetX = offsetX == -2 ? -52 : -2;
         }
 
     }

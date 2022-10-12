@@ -28,8 +28,13 @@ namespace KjellBlazorDemo.App.Logic
         {
             bool result = false;
 
-            var cols = _assetList.Where(o => o.Left > (_player.PositionLeft - 34) && o.Left < (_player.PositionLeft) + 2
-                            && o.Top > (_player.PositionTop - 34) && o.Top < (_player.PositionTop) + 2).ToList();
+            //todo: these should definitely not be hardcoded, should take height width into account of both items
+            //also https://codereview.stackexchange.com/questions/149782/2d-collision-detection
+            var cols = _assetList.Where(o => o.Left > (_player.PositionLeft - 20) //player pos - trash width
+                            && o.Left < (_player.PositionLeft) + 20 //player pos + trash width
+                            && o.Top > (_player.PositionTop - 32) //player pos - trash height 
+                            && o.Top < (_player.PositionTop) + 32)  //player pos + trash height
+                .ToList();
 
             foreach (var c in cols)
             {
