@@ -8,13 +8,13 @@
 
         private int CycleCounter { get; set; }
 
-        public Mob(string name)
+        public Mob(string name, int x, int y, int h, int w)
         {
             Name = name;
-            offsetX = -8;
-            offsetY = -3;
-            Width = 25;
-            Height = 25;
+            offsetX = x;
+            offsetY = y;
+            Width = h;
+            Height = w;
             CycleCounter = 0;
         }
 

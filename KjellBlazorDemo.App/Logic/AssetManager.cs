@@ -28,7 +28,7 @@ namespace KjellBlazorDemo.App.Logic
         {
             for (int i = 0; i < count; i++)
             {
-                list.Add(new Mob("troll"));
+                list.Add(new Mob("troll", -8, -3, 25, 25));
             }
             
         }

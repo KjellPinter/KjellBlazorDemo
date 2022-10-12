@@ -23,12 +23,15 @@ namespace KjellBlazorDemo.App.Pages
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
 
+        string Message { get; set; }
+
         public Index()
         {
             SettingsDialog = new SettingsDialog();
             MessageDialog = new MessageDialog();
             DecisionDialog = new DecisionDialog();
             AssetManager.ResetAssets(AssetList);
+            Message = "Move with the arrow keys and pick up the discarded cans";
         }
 
 
@@ -69,7 +72,12 @@ namespace KjellBlazorDemo.App.Pages
         {
             Interactions.CollisionDetect(AssetList, Player);
 
-            if (AssetList.Where(o => o.Name == "trash").Count() == 0)
+            if (AssetList.Where(o => o.Name == "trash").Count() < 5)
+            {
+                Message = "";
+            }
+
+                if (AssetList.Where(o => o.Name == "trash").Count() == 0)
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
                 AssetManager.ResetAssets(AssetList);
