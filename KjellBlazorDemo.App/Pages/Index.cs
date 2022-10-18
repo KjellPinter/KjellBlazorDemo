@@ -20,6 +20,7 @@ namespace KjellBlazorDemo.App.Pages
         private AssetManager AssetManager = new AssetManager();
         private List<Asset> AssetList = new List<Asset>();
 
+        private int HelpCounter = 0;
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
 
@@ -76,7 +77,11 @@ namespace KjellBlazorDemo.App.Pages
 
             if (AssetList.Where(o => o.Name == "trash").Count() < 5)
             {
-                Message = "press space for your special move";
+                if (HelpCounter == 0)
+                {
+                    Message = "press space for your special move";
+                    HelpCounter = 1;
+                }
             }
 
                 if (AssetList.Where(o => o.Name == "trash").Count() == 0)

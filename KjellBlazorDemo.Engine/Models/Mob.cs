@@ -39,7 +39,7 @@
                 offsetX = offsetX == -8 ? -86 : -8;
             }
 
-            if (CycleCounter >= 50)
+            if (CycleCounter >= 100)
             {
                 MessageText = "";
                 CycleCounter = 0;

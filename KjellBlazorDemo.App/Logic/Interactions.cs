@@ -21,7 +21,7 @@ namespace KjellBlazorDemo.App.Logic
                 _assetList.Where(o => o.GetType() == typeof(Mob)).Cast<Mob>().ToList().ForEach(o => o.AttackPlayer());
             }
 
-            MoveMobTowardsPlayer();
+            MobAction();
 
         }
 
@@ -34,7 +34,8 @@ namespace KjellBlazorDemo.App.Logic
             var cols = _assetList.Where(o => o.Left > (_player.PositionLeft - 20) //player pos - trash width
                             && o.Left < (_player.PositionLeft) + 20 //player pos + trash width
                             && o.Top > (_player.PositionTop - 32) //player pos - trash height 
-                            && o.Top < (_player.PositionTop) + 32)  //player pos + trash height
+                            && o.Top < (_player.PositionTop) + 32
+                            && o.GetType() == typeof(Trash)) //player pos + trash height
                 .ToList();
 
             foreach (var c in cols)
@@ -44,6 +45,27 @@ namespace KjellBlazorDemo.App.Logic
             }
 
             return result;
+        }
+
+        internal void MobAction()
+        {
+
+
+            MoveMobTowardsPlayer();
+
+            //todo - combine with trash logic and make dynamic
+            var cols = _assetList.Where(o => o.Left > (_player.PositionLeft - 20)
+                           && o.Left < (_player.PositionLeft) + 20
+                           && o.Top > (_player.PositionTop - 32)
+                           && o.Top < (_player.PositionTop) + 32
+                           && o.GetType() == typeof(Mob))
+                .ToList();
+
+            foreach (Mob m in cols)
+            {
+                m.IsAttacking = false; //todo - actually do something 
+                m.MessageText = "";
+            }
         }
 
         internal void MoveMobTowardsPlayer()
