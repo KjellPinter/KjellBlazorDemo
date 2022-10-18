@@ -30,6 +30,9 @@ namespace KjellBlazorDemo.Engine
                 case "ArrowDown":
                     _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
                     break;
+                case "Space":
+                    _playerManager.SpecialMove();
+                    break;
                 default:
                     //throw new ArgumentException("no definition for this key");
                     break;

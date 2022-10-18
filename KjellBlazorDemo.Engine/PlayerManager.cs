@@ -57,5 +57,12 @@ namespace KjellBlazorDemo.Engine
                 Character.FaceBack();
             }
         }
+
+        public void SpecialMove()
+        {
+            //temporary action
+            PositionTop = 100;
+            PositionLeft = 200;
+        }
     }
 }

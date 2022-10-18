@@ -74,7 +74,7 @@ namespace KjellBlazorDemo.App.Pages
 
             if (AssetList.Where(o => o.Name == "trash").Count() < 5)
             {
-                Message = "";
+                Message = "press space for your special move";
             }
 
                 if (AssetList.Where(o => o.Name == "trash").Count() == 0)

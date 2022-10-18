@@ -14,6 +14,7 @@ namespace KjellBlazorDemo.Engine.Interfaces
         public void MoveHorizontal(int amount, int minX, int maxX);
 
         public void MoveVertical(int amount, int minY, int maxY);
+        public void SpecialMove();
         public Character Character { get; set; }
 
     }      

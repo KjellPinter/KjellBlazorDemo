@@ -5,10 +5,30 @@ using Moq;
 namespace KjellBlazorDemo.EngineTests
 {
     public class ControlsTests
-    {        
+    {
+
+        private Mock<IPlayerManager> _player;
+        private Mock<Settings> _settings;
+        private IControls _controls;
 
         public ControlsTests()
-        {         
+        {
+            //global setup 
+            _player = new Mock<IPlayerManager>();
+            _settings = new Mock<Settings>();
+            _controls = new Controls(_player.Object, _settings.Object);
+        }
+
+        [Fact]
+        public void SpaceDoesSpecialMove()
+        {
+            //arrange
+
+            //act
+            _controls.KeyDown("Space");
+
+            //assert
+            _player.Verify(p => p.SpecialMove(), Times.Once());
         }
 
         [Theory]
@@ -18,12 +38,7 @@ namespace KjellBlazorDemo.EngineTests
         [InlineData("ArrowDown", 0, 1)]
         public void ArrowsMovePlayer(string key, int horizontal, int vertical)
         {
-            //assert 
-            var _player = new Mock<IPlayerManager>();
-            var _settings = new Mock<Settings>();
-
-            var _controls = new Controls(_player.Object, _settings.Object);
-
+            //arrange 
             int amount = _settings.Object.MOVEMENT_DISTANCE;
 
             if (key == "ArrowLeft" || key == "ArrowUp")
