@@ -38,6 +38,8 @@ namespace KjellBlazorDemo.App.Pages
         private void HandleKeyDown(KeyboardEventArgs a)
         {
             Controls.KeyDown(a.Code);
+
+            if (a.Code == "Space") { Message = ""; }
         }
 
         protected override async Task OnAfterRenderAsync(bool first)
@@ -86,8 +88,6 @@ namespace KjellBlazorDemo.App.Pages
 
             this.StateHasChanged();
         }
-
-        
 
         public void ShowAbout()
         {

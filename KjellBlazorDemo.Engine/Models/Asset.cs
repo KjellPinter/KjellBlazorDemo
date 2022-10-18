@@ -10,5 +10,11 @@
         public int offsetY { get; set; }
         public int offsetX { get; set; }
         public string? Sprite { get; set; }
+        /// <summary>
+        /// Populates floating div under the asset, for example a label or dialog.  
+        /// </summary>
+        public string? MessageText { get; set; }
+        public bool Visible { get; set; } = true;
+
     }
 }

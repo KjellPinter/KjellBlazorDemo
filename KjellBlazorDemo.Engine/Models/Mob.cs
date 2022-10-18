@@ -18,17 +18,32 @@
             CycleCounter = 0;
         }
 
+        public void AttackPlayer()
+        {
+            if (IsAttacking == false)
+            {
+                CycleCounter = 0;
+                IsAttacking = true;
+                MessageText = "HEY!";
+                Visible = true;
+            }
+        }
+
         public void Animate()
         {
             CycleCounter++;
 
-            if (CycleCounter ==10)
+            if (CycleCounter % 10 == 0)
             {
-                CycleCounter = 0;
+                //CycleCounter = 0;
                 offsetX = offsetX == -8 ? -86 : -8;
             }
 
-            
+            if (CycleCounter >= 50)
+            {
+                MessageText = "";
+                CycleCounter = 0;
+            }
         }
     }
 }

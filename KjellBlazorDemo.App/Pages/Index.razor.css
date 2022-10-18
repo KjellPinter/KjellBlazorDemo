@@ -53,6 +53,11 @@
     /*border: 1px solid red;*/
 }
 
+.assettLabel {
+    position: absolute;
+    /*border: 1px solid red;*/
+}
+
 #Menu {
     background-color: rgb(89, 83, 83);
     position: absolute;

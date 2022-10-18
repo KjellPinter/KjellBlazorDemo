@@ -15,9 +15,10 @@ namespace KjellBlazorDemo.App.Logic
             _player = Player;
             _assetList = AssetList;
 
+            //remove trash, and if any trash has been removed then active the troll attack
             if (RemoveTrashWhichTouchesPlayer())
             {
-                _assetList.Where(o => o.GetType() == typeof(Mob)).Cast<Mob>().ToList().ForEach(o => o.IsAttacking = true);
+                _assetList.Where(o => o.GetType() == typeof(Mob)).Cast<Mob>().ToList().ForEach(o => o.AttackPlayer());
             }
 
             MoveMobTowardsPlayer();
