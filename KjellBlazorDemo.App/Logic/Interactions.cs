@@ -23,7 +23,7 @@ namespace KjellBlazorDemo.App.Logic
                 assetList.Where(o => o.GetType() == typeof(Mob)).Cast<Mob>().ToList().ForEach(o => o.AttackPlayer());
             }
 
-            MobAction();
+            MobActions();
 
         }
 
@@ -42,51 +42,58 @@ namespace KjellBlazorDemo.App.Logic
             return result;
         }
 
-        internal void MobAction()
+        internal void MobActions()
         {
 
-            MoveMobTowardsPlayer();
+            MobsChasing();
+            MobsAttacking();
+        }
 
-            var cols = Logic.DetectCollisions(AssetList, Player, typeof(Trash)).ToList();
+        internal void MobsChasing()
+        {
+            List<Mob> mobs = AssetList.Where(o => o.GetType() == typeof(Mob))
+                .OfType<Mob>().Where(m => m.IsAttacking == true).ToList();
+
+            mobs.ForEach(m =>
+            {
+                m.Animate();
+                MoveMobTowardsPlayer(m);
+            });
+        }
+
+        private void MoveMobTowardsPlayer(Mob mob)
+        {
+            if (mob.Top < Player.PositionTop)
+            {
+                ++mob.Top;
+            }
+
+            if (mob.Top > Player.PositionTop)
+            {
+                --mob.Top;
+            }
+
+            if (mob.Left < Player.PositionLeft)
+            {
+                ++mob.Left;
+            }
+
+            if (mob.Left > Player.PositionLeft)
+            {
+                --mob.Left;
+            }
+        }
+
+        private void MobsAttacking()
+        {
+            var cols = Logic.DetectCollisions(AssetList, Player, typeof(Mob)).ToList();
 
             foreach (Mob m in cols)
             {
+                //mob is colliding with player, now what?
                 m.IsAttacking = false; //todo - actually do something 
                 m.MessageText = "";
             }
         }
-
-        internal void MoveMobTowardsPlayer()
-        {
-            Mob? mob = (Mob?)AssetList.Where(o => o.GetType() == typeof(Mob)).FirstOrDefault();
-            
-            if (mob is not null && mob.IsAttacking)
-            {
-
-                mob.Animate();
-
-                if (mob.Top < Player.PositionTop)
-                {
-                    ++mob.Top;
-                }
-
-                if (mob.Top > Player.PositionTop)
-                {
-                    --mob.Top;
-                }
-
-                if (mob.Left < Player.PositionLeft)
-                {
-                    ++mob.Left;
-                }
-
-                if (mob.Left > Player.PositionLeft)
-                {
-                    --mob.Left;
-                }
-            }
-        }
-
-
     }
 }
