@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using System.Timers
+@using KjellBlazorDemo.App.Logic
 @using KjellBlazorDemo.Engine.Models
 @using KjellBlazorDemo.Engine
 @using KjellBlazorDemo.Engine.Interfaces
@@ -7,6 +8,9 @@
 @inject IPlayerManager Player
 @inject IControls Controls
 @inject IJSRuntime JsRunTime
+@inject AssetManager AssetManager
+@inject Interactions Interactions
+@inject ILogic Logic
 
 <PageTitle>Trash Troll @version</PageTitle>
 

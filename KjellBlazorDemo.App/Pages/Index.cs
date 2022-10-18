@@ -10,14 +10,10 @@ namespace KjellBlazorDemo.App.Pages
 {
     public partial class Index
     {
-        //[Inject]
-
         private SettingsDialog SettingsDialog { get; set; }
         private MessageDialog MessageDialog { get; set; }
         private DecisionDialog DecisionDialog { get; set; }
 
-        private Interactions Interactions = new Interactions();
-        private AssetManager AssetManager = new AssetManager();
         private List<Asset> AssetList = new List<Asset>();
 
         private int HelpCounter = 0;
@@ -26,15 +22,15 @@ namespace KjellBlazorDemo.App.Pages
 
         string Message { get; set; }
 
+
         public Index()
         {
             SettingsDialog = new SettingsDialog();
             MessageDialog = new MessageDialog();
             DecisionDialog = new DecisionDialog();
-            AssetManager.ResetAssets(AssetList);
+            
             Message = "Move with the arrow keys and pick up the discarded cans";
         }
-
 
         private void HandleKeyDown(KeyboardEventArgs a)
         {
@@ -50,13 +46,16 @@ namespace KjellBlazorDemo.App.Pages
             {
                 await mainDiv.FocusAsync();
                 await JsRunTime.InvokeVoidAsync("OnScrollEvent");
+                
             }
-           
+
             
         }
 
         protected override Task OnInitializedAsync()
         {
+            AssetManager.ResetAssets(AssetList);
+
             _timer = new System.Timers.Timer();
             _timer.Interval = 20;
             _timer.Elapsed += TimerElapsed;
@@ -73,7 +72,7 @@ namespace KjellBlazorDemo.App.Pages
 
         private void Redraw()
         {
-            Interactions.CollisionDetect(AssetList, Player);
+            Interactions.CollisionDetect(AssetList, Player, Logic);
 
             if (AssetList.Where(o => o.Name == "trash").Count() < 5)
             {
