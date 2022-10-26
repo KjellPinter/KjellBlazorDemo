@@ -45,11 +45,9 @@ namespace KjellBlazorDemo.App.Pages
             if (!SettingsDialog.ShowDialog)
             {
                 await mainDiv.FocusAsync();
-                await JsRunTime.InvokeVoidAsync("OnScrollEvent");
-                
+                await JsRunTime.InvokeVoidAsync("OnScrollEvent");                
             }
 
-            
         }
 
         protected override Task OnInitializedAsync()
@@ -83,7 +81,7 @@ namespace KjellBlazorDemo.App.Pages
                 }
             }
 
-                if (AssetList.Where(o => o.Name == "trash").Count() == 0)
+            if (AssetList.Where(o => o.Name == "trash").Count() == 0)
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
                 AssetManager.ResetAssets(AssetList);

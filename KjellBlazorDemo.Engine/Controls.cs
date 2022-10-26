@@ -7,35 +7,33 @@ namespace KjellBlazorDemo.Engine
 
         private IPlayerManager _playerManager;
         private readonly Settings _settings;
+        private Dictionary<string, Action> _commands;
 
         public Controls(IPlayerManager player, Settings settings)
         {
             _playerManager = player;
             _settings = settings;
+            DefineCommands();
+        }
+
+        private void DefineCommands()
+        {
+            _commands = new Dictionary<string, Action>()
+            {
+                { "ArrowLeft", () => _playerManager.MoveHorizontal(-_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X) },
+                { "ArrowRight", () => _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X) },
+                { "ArrowUp", () => _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y) },
+                { "ArrowDown", () => _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y) },
+                { "Space", () => _playerManager.SpecialMove() }
+            };
+
         }
 
         public void KeyDown(string key)
         {
-            switch (key)
+            if (_commands.ContainsKey(key))
             {
-                case "ArrowLeft":
-                    _playerManager.MoveHorizontal(-_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
-                    break;
-                case "ArrowRight":
-                    _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
-                    break;
-                case "ArrowUp":
-                    _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
-                    break;
-                case "ArrowDown":
-                    _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
-                    break;
-                case "Space":
-                    _playerManager.SpecialMove();
-                    break;
-                default:
-                    //throw new ArgumentException("no definition for this key");
-                    break;
+                _commands[key].Invoke();
             }
         }
 
