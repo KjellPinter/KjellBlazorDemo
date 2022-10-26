@@ -1,4 +1,5 @@
 ﻿using KjellBlazorDemo.App.Components;
+using KjellBlazorDemo.App.Logic;
 using KjellBlazorDemo.Engine;
 using KjellBlazorDemo.Engine.Interfaces;
 using System;
@@ -23,6 +24,9 @@ namespace KjellBlazorDemo.AppTests
             ctx.Services.AddSingleton<IPlayerManager, PlayerManager>();
             ctx.Services.AddSingleton<IControls, Controls>();
             ctx.Services.AddSingleton<Settings>();
+            ctx.Services.AddSingleton<ILogic, Engine.Logic>();
+            ctx.Services.AddSingleton<Interactions>();
+            ctx.Services.AddSingleton<AssetManager>();
 
             var sets = new Settings();
 
