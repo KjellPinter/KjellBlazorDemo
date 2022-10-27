@@ -9,10 +9,9 @@ namespace KjellBlazorDemo.Engine
         private readonly Settings _settings;
         private Dictionary<string, Action> _commands;
 
-        public Controls(IPlayerManager player, Settings settings)
+        public Controls(IPlayerManager player)
         {
             _playerManager = player;
-            _settings = settings;
             DefineCommands();
         }
 
@@ -20,10 +19,10 @@ namespace KjellBlazorDemo.Engine
         {
             _commands = new Dictionary<string, Action>()
             {
-                { "ArrowLeft", () => _playerManager.MoveHorizontal(-_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X) },
-                { "ArrowRight", () => _playerManager.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X) },
-                { "ArrowUp", () => _playerManager.MoveVertical(-_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y) },
-                { "ArrowDown", () => _playerManager.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y) },
+                { "ArrowLeft", () => _playerManager.MoveLeft() },
+                { "ArrowRight", () => _playerManager.MoveRight() },
+                { "ArrowUp", () => _playerManager.MoveUp() },
+                { "ArrowDown", () => _playerManager.MoveDown() },
                 { "Space", () => _playerManager.SpecialMove() }
             };
 
@@ -35,6 +34,11 @@ namespace KjellBlazorDemo.Engine
             {
                 _commands[key].Invoke();
             }
+        }
+
+        public void KeyUp(string key)
+        {
+            _playerManager.StopMovement();
         }
 
     }

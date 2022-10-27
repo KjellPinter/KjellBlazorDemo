@@ -16,7 +16,7 @@ namespace KjellBlazorDemo.EngineTests
             //global setup 
             _player = new Mock<IPlayerManager>();
             _settings = new Mock<Settings>();
-            _controls = new Controls(_player.Object, _settings.Object);
+            _controls = new Controls(_player.Object);
         }
 
         [Fact]
@@ -32,11 +32,11 @@ namespace KjellBlazorDemo.EngineTests
         }
 
         [Theory]
-        [InlineData("ArrowLeft", 1, 0)]
-        [InlineData("ArrowRight", 1, 0)]
-        [InlineData("ArrowUp", 0, 1)]
-        [InlineData("ArrowDown", 0, 1)]
-        public void ArrowsMovePlayer(string key, int horizontal, int vertical)
+        [InlineData("ArrowLeft")]
+        [InlineData("ArrowRight")]
+        [InlineData("ArrowUp")]
+        [InlineData("ArrowDown")]
+        public void ArrowsMovePlayer(string key)
         {
             //arrange 
             int amount = _settings.Object.MOVEMENT_DISTANCE;
@@ -50,17 +50,34 @@ namespace KjellBlazorDemo.EngineTests
             _controls.KeyDown(key);
 
             //assert
-            _player.Verify(x => x.MoveHorizontal(amount, _settings.Object.MIN_X, _settings.Object.MAX_X), Times.Exactly(horizontal));
-            _player.Verify(x => x.MoveVertical(amount, _settings.Object.MIN_Y, _settings.Object.MAX_Y), Times.Exactly(vertical));
+            if (key == "ArrowRight")
+            {
+                _player.Verify(x => x.MoveRight(), Times.Exactly(1));
+            }
+
+            if (key == "ArrowLeft")
+            {
+                _player.Verify(x => x.MoveLeft(), Times.Exactly(1));
+            }
+
+            if (key == "ArrowUp")
+            {
+                _player.Verify(x => x.MoveUp(), Times.Exactly(1));
+            }
+
+            if (key == "ArrowDown")
+            {
+                _player.Verify(x => x.MoveDown(), Times.Exactly(1));
+            }
         }
 
         [Fact]
         public void DontAllowMoveOffscreenLeftTop()
         {
             //setup a real player object
-            var Player = new PlayerManager();
             var Settings = new Settings();
-            var Controls = new Controls(Player, Settings);
+            var Player = new PlayerManager(Settings);
+            var Controls = new Controls(Player);
 
             //act
             for (int i = 0; i < 50; i++)

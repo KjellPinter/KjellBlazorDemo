@@ -55,7 +55,7 @@ namespace KjellBlazorDemo.App.Pages
             AssetManager.ResetAssets(AssetList);
 
             _timer = new System.Timers.Timer();
-            _timer.Interval = 20;
+            _timer.Interval = 20; // Settings.GAME_TICK;
             _timer.Elapsed += TimerElapsed;
             _timer.AutoReset = true;
             _timer.Enabled = true;

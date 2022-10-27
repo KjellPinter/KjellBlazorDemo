@@ -19,7 +19,11 @@ namespace KjellBlazorDemo.Engine
             MAX_X = 400;
             MIN_Y = 0;
             MAX_Y = 400;
+            GAME_TICK = 20;
         }
+
+        //todo: implement
+        public int GAME_TICK { get; set; }
 
         public int MOVEMENT_DISTANCE { get; set; }
 

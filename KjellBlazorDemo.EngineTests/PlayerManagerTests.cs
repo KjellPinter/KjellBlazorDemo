@@ -16,8 +16,8 @@ namespace KjellBlazorDemo.EngineTests
 
         public PlayerManagerTests()
         {
-            _player = new PlayerManager();
             _settings = new Settings();
+            _player = new PlayerManager(_settings);
         }
 
         [Fact]
@@ -28,8 +28,8 @@ namespace KjellBlazorDemo.EngineTests
             int positionLeft = _player.PositionLeft;
 
             //act
-            _player.MoveVertical(_settings.MOVEMENT_DISTANCE, _settings.MIN_Y, _settings.MAX_Y);
-            _player.MoveHorizontal(_settings.MOVEMENT_DISTANCE, _settings.MIN_X, _settings.MAX_X);
+            _player.MoveDown();
+            _player.MoveRight();
 
             //assert
             Assert.Equal(_player.PositionTop, positionTop + _settings.MOVEMENT_DISTANCE);
