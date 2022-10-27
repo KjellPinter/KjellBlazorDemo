@@ -10,6 +10,7 @@ namespace KjellBlazorDemo.Engine.Interfaces
     {
         
         void KeyDown(string key);
+        void KeyUp(string key);
 
     }
 }

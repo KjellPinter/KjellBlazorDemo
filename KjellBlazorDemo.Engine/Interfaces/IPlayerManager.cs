@@ -11,17 +11,12 @@ namespace KjellBlazorDemo.Engine.Interfaces
     {
         public int PositionTop { get; set;  }
         public int PositionLeft { get; set;  }
-        public bool IsMoving { get; set; }
         public void MoveRight();
         public void MoveLeft();
         public void MoveUp();
         public void MoveDown();
 
-        public void MoveHorizontal(int amount);
-
-        public void MoveVertical(int amount);
         public void SpecialMove();
-        public void StopMovement();
         public Character Character { get; set; }
 
     }      

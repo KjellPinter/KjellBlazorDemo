@@ -35,8 +35,11 @@ namespace KjellBlazorDemo.App.Pages
         private void HandleKeyDown(KeyboardEventArgs a)
         {
             Controls.KeyDown(a.Code);
+        }
 
-            if (a.Code == "Space") { Message = ""; }
+        private void HandleKeyUp(KeyboardEventArgs a)
+        {
+            Controls.KeyUp(a.Code);
         }
 
         protected override async Task OnAfterRenderAsync(bool first)

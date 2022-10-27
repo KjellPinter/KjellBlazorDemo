@@ -8,17 +8,13 @@ namespace KjellBlazorDemo.Engine
         public int PositionTop { get; set; }
         public int PositionLeft { get; set; }
         public Character Character { get; set; }
-        public bool IsMoving { get; set; }
         private Settings _settings;
      
         public PlayerManager(Settings settings)
         {
-
             _settings = settings;
-
             PositionTop = 100;
             PositionLeft = 200;
-
             this.Character = new Character();
         }
 
@@ -28,7 +24,6 @@ namespace KjellBlazorDemo.Engine
                 this.PositionLeft.ToString(), ",",
                 this.PositionTop.ToString(), ")");
         }
-
     
         public void SpecialMove()
         {
@@ -37,65 +32,51 @@ namespace KjellBlazorDemo.Engine
             PositionLeft = 200;
         }
 
-        public void StopMovement()
+        public void MoveRight() => Move(_settings.MOVEMENT_DISTANCE, 0);
+
+        public void MoveLeft() => Move(-_settings.MOVEMENT_DISTANCE, 0);
+        
+        public void MoveUp() => Move(0, -_settings.MOVEMENT_DISTANCE);        
+
+        public void MoveDown() => Move(0, _settings.MOVEMENT_DISTANCE);
+        
+        //x y are amounts to move on that axis
+        private void Move(int x, int y)
         {
-            IsMoving = false;
+            if ((PositionLeft += x) < _settings.MIN_X)
+                x = 0;
+            
+
+            if ((PositionTop += y) < _settings.MIN_Y)
+                y = 0;
+            
+            SetFacingDirectionAndAnimate(x, y);
+            PositionLeft += x;
+            PositionTop += y;                
         }
 
-        public void MoveRight()
+        private void SetFacingDirectionAndAnimate(int x, int y)
         {
-            MoveHorizontal(_settings.MOVEMENT_DISTANCE);
-        }
+            //dont do anything for 0
+            if (x > 0)
+            {
+                Character.FaceRight();
+            }
+            
+            if (x < 0)
+            {
+                Character.FaceLeft();
+            }
 
-        public void MoveLeft()
-        {
-            MoveHorizontal(-_settings.MOVEMENT_DISTANCE);
-        }
-
-        public void MoveUp()
-        {
-            MoveVertical(-_settings.MOVEMENT_DISTANCE);
-        }
-
-        public void MoveDown()
-        {
-            MoveVertical(_settings.MOVEMENT_DISTANCE);
-        }
-
-        public void MoveHorizontal(int amount)
-        {
-            if (PositionLeft + amount < _settings.MIN_X)
-                amount = 0;
-
-                PositionLeft += amount;
-
-                if (amount > 0)
-                {
-                    Character.FaceRight();
-                }
-                else
-                {
-                    Character.FaceLeft();
-                }
-
-        }
-
-        public void MoveVertical(int amount)
-        {
-            if (PositionTop + amount < _settings.MIN_Y)
-                amount = 0;
-
-                PositionTop += amount;
-
-                if (amount > 0)
-                {
-                    Character.FaceForward();
-                }
-                else
-                {
-                    Character.FaceBack();
-                }
-
+            if (y > 0)
+            {
+                Character.FaceForward();
+            }
+            
+            if (y < 0)
+            {
+                Character.FaceBack();
+            }
         }
 
     }

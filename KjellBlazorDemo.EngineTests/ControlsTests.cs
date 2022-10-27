@@ -83,11 +83,13 @@ namespace KjellBlazorDemo.EngineTests
             for (int i = 0; i < 50; i++)
             {
                 Controls.KeyDown("ArrowLeft");
+                Controls.KeyUp("ArrowLeft");
             }
 
             for (int i = 0; i < 50; i++)
             {
                 Controls.KeyDown("ArrowUp");
+                Controls.KeyUp("ArrowUp");
             }
 
             //assert
