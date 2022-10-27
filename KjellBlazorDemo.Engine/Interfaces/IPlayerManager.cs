@@ -15,7 +15,7 @@ namespace KjellBlazorDemo.Engine.Interfaces
         public void MoveLeft();
         public void MoveUp();
         public void MoveDown();
-
+        public bool IsMovingHorizontally { get; set; }
         public void SpecialMove();
         public Character Character { get; set; }
 

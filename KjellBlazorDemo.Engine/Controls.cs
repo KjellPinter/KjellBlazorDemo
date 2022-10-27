@@ -48,6 +48,12 @@ namespace KjellBlazorDemo.Engine
                 {
                     _keysDown.Add(key);
 
+                    //track if moving horizontally so we dont switch to up/down sprite
+                    if (key == "ArrowLeft" || key == "ArrowRight")
+                    {
+                        _playerManager.IsMovingHorizontally = true;
+                    }
+
                     while (_keysDown.Contains(key))
                     {
                         await Task.Delay(100);
@@ -60,6 +66,13 @@ namespace KjellBlazorDemo.Engine
 
         public void KeyUp(string key)
         {
+
+            //track if moving horizontally so we dont switch to up/down sprite
+            if (key == "ArrowLeft" || key == "ArrowRight")
+            {
+                _playerManager.IsMovingHorizontally = false;
+            }
+
             _keysDown.Remove(key);
         }
 

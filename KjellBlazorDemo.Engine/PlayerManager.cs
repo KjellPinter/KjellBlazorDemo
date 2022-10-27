@@ -9,6 +9,7 @@ namespace KjellBlazorDemo.Engine
         public int PositionLeft { get; set; }
         public Character Character { get; set; }
         private Settings _settings;
+        public bool IsMovingHorizontally { get; set; }
      
         public PlayerManager(Settings settings)
         {
@@ -68,14 +69,17 @@ namespace KjellBlazorDemo.Engine
                 Character.FaceLeft();
             }
 
-            if (y > 0)
+            if (!IsMovingHorizontally)
             {
-                Character.FaceForward();
-            }
-            
-            if (y < 0)
-            {
-                Character.FaceBack();
+                if (y > 0)
+                {
+                    Character.FaceForward();
+                }
+
+                if (y < 0)
+                {
+                    Character.FaceBack();
+                }
             }
         }
 
