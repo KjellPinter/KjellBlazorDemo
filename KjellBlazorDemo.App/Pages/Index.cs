@@ -14,14 +14,13 @@ namespace KjellBlazorDemo.App.Pages
         private MessageDialog MessageDialog { get; set; }
         private DecisionDialog DecisionDialog { get; set; }
 
-        private List<Asset> AssetList = new List<Asset>();
+        private readonly List<Asset> AssetList = new();
 
         private int HelpCounter = 0;
         private ElementReference mainDiv;
         private System.Timers.Timer? _timer;
 
         string Message { get; set; }
-
 
         public Index()
         {
@@ -50,15 +49,16 @@ namespace KjellBlazorDemo.App.Pages
                 await mainDiv.FocusAsync();
                 await JsRunTime.InvokeVoidAsync("OnScrollEvent");                
             }
-
         }
 
         protected override Task OnInitializedAsync()
         {
             AssetManager.ResetAssets(AssetList);
 
-            _timer = new System.Timers.Timer();
-            _timer.Interval = 20; // Settings.GAME_TICK;
+            _timer = new System.Timers.Timer
+            {
+                Interval = 20 // Settings.GAME_TICK;
+            };
             _timer.Elapsed += TimerElapsed;
             _timer.AutoReset = true;
             _timer.Enabled = true;
@@ -75,7 +75,7 @@ namespace KjellBlazorDemo.App.Pages
         {
             Interactions.CollisionDetect(AssetList, Player, Logic);
 
-            if (AssetList.Where(o => o.Name == "trash").Count() < 5)
+            if (AssetList.Count(o => o.Name == "trash") < 5)
             {
                 if (HelpCounter == 0)
                 {
@@ -84,12 +84,11 @@ namespace KjellBlazorDemo.App.Pages
                 }
             }
 
-            if (AssetList.Where(o => o.Name == "trash").Count() == 0)
+            if (!AssetList.Any(o => o.Name == "trash"))
             {
                 MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
                 AssetManager.ResetAssets(AssetList);
             }
-
 
             this.StateHasChanged();
         }
@@ -102,7 +101,5 @@ namespace KjellBlazorDemo.App.Pages
         {
             SettingsDialog.Show();
         }
-
     }
-
 }

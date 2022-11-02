@@ -4,11 +4,10 @@ namespace KjellBlazorDemo.Engine
 {
     public class Controls : IControls
     {
-
-        private IPlayerManager _playerManager;
+        private readonly IPlayerManager _playerManager;
         private Dictionary<string, Action> _keyDownCommands;
         private Dictionary<string, Action> _keyUpCommands;
-        private List<string> _keysDown;
+        private readonly List<string> _keysDown;
 
         public Controls(IPlayerManager player)
         {
@@ -61,12 +60,10 @@ namespace KjellBlazorDemo.Engine
                     }
                 }
             }
-
         }
 
         public void KeyUp(string key)
         {
-
             //track if moving horizontally so we dont switch to up/down sprite
             if (key == "ArrowLeft" || key == "ArrowRight")
             {
@@ -75,7 +72,5 @@ namespace KjellBlazorDemo.Engine
 
             _keysDown.Remove(key);
         }
-
     }
-
 }
