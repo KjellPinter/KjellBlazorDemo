@@ -4,7 +4,7 @@
     {
 
 
-        public bool IsAttacking { get; set; }
+        public bool IsChasing { get; set; }
 
         private int CycleCounter { get; set; }
 
@@ -18,24 +18,48 @@
             CycleCounter = 0;
         }
 
-        public void AttackPlayer()
+        public void ChasePlayer()
         {
-            if (IsAttacking == false)
+            if (IsChasing == false)
             {
                 CycleCounter = 0;
-                IsAttacking = true;
+                IsChasing = true;
                 MessageText = "HEY!";
                 Visible = true;
             }
         }
-
-        public void Animate()
+        
+        public void AnimateAttack()
         {
             CycleCounter++;
 
             if (CycleCounter % 10 == 0)
             {
-                //CycleCounter = 0;
+                if (offsetX == -8)
+                {
+                    offsetX = -130;
+                    offsetY = -97;
+                }
+                else
+                {
+                    offsetX = -8;
+                    offsetY = -3;
+                }
+            }
+
+            if (CycleCounter >= 100)
+            {
+                MessageText = "";
+                CycleCounter = 0;
+            }
+        }
+
+        public void AnimateRun()
+        {
+            CycleCounter++;
+
+            if (CycleCounter % 10 == 0)
+            {
                 offsetX = offsetX == -8 ? -86 : -8;
             }
 

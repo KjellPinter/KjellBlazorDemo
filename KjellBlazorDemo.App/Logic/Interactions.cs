@@ -17,10 +17,10 @@ namespace KjellBlazorDemo.App.Logic
             AssetList = assetList;
             Logic = logic;
 
-            //remove trash, and if any trash has been removed then active the troll attack
+            //remove trash, and if any trash has been removed then activate the troll attack
             if (RemoveTrashWhichTouchesPlayer())
             {
-                assetList.Where(o => o.GetType() == typeof(Mob)).Cast<Mob>().ToList().ForEach(o => o.AttackPlayer());
+                assetList.Where(o => o.GetType() == typeof(Mob)).Cast<Mob>().ToList().ForEach(o => o.ChasePlayer());
             }
 
             MobActions();
@@ -52,17 +52,16 @@ namespace KjellBlazorDemo.App.Logic
         internal void MobsChasing()
         {
             List<Mob> mobs = AssetList.Where(o => o.GetType() == typeof(Mob))
-                .OfType<Mob>().Where(m => m.IsAttacking == true).ToList();
+                .OfType<Mob>().Where(m => m.IsChasing).ToList();
 
-            mobs.ForEach(m =>
-            {
-                m.Animate();
-                MoveMobTowardsPlayer(m);
-            });
+            mobs.ForEach(m => MoveMobTowardsPlayer(m));
         }
 
         private void MoveMobTowardsPlayer(Mob mob)
         {
+
+            mob.AnimateRun();
+
             if (mob.Top < Player.PositionTop)
             {
                 ++mob.Top;
@@ -90,8 +89,8 @@ namespace KjellBlazorDemo.App.Logic
 
             foreach (Mob m in cols)
             {
-                //mob is colliding with player, now what?
-                m.IsAttacking = false; //todo - actually do something 
+                m.AnimateAttack();
+                m.IsChasing = false; 
                 m.MessageText = "";
             }
         }
