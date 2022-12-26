@@ -48,26 +48,27 @@ namespace KjellBlazorDemo.EngineTests
 
             //act
             _controls.KeyDown(key);
+            _controls.KeyUp(key);
 
-            //assert
+            //assert - may fire multiple times if key is held down
             if (key == "ArrowRight")
             {
-                _player.Verify(x => x.MoveRight(), Times.Exactly(1));
+                _player.Verify(x => x.MoveRight(), Times.AtLeast(1));
             }
 
             if (key == "ArrowLeft")
             {
-                _player.Verify(x => x.MoveLeft(), Times.Exactly(1));
+                _player.Verify(x => x.MoveLeft(), Times.AtLeast(1));
             }
 
             if (key == "ArrowUp")
             {
-                _player.Verify(x => x.MoveUp(), Times.Exactly(1));
+                _player.Verify(x => x.MoveUp(), Times.AtLeast(1));
             }
 
             if (key == "ArrowDown")
             {
-                _player.Verify(x => x.MoveDown(), Times.Exactly(1));
+                _player.Verify(x => x.MoveDown(), Times.AtLeast(1));
             }
         }
 
