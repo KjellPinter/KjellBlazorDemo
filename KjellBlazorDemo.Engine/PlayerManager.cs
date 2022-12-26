@@ -43,10 +43,10 @@ namespace KjellBlazorDemo.Engine
         //x y are amounts to move on that axis
         private void Move(int x, int y)
         {
-            if ((PositionLeft += x) < _settings.MIN_X)
+            if ((PositionLeft + x) < _settings.MIN_X)
                 x = 0;
 
-            if ((PositionTop += y) < _settings.MIN_Y)
+            if ((PositionTop + y) < _settings.MIN_Y)
                 y = 0;
 
             SetFacingDirectionAndAnimate(x, y);
