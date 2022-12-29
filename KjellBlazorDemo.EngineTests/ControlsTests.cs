@@ -83,15 +83,17 @@ namespace KjellBlazorDemo.EngineTests
             //act
             for (int i = 0; i < 50; i++)
             {
-                Controls.KeyDown("ArrowLeft");
-                Controls.KeyUp("ArrowLeft");
+                Controls.KeyDown("ArrowLeft");                
             }
+
+            Controls.KeyUp("ArrowLeft");
 
             for (int i = 0; i < 50; i++)
             {
-                Controls.KeyDown("ArrowUp");
-                Controls.KeyUp("ArrowUp");
+                Controls.KeyDown("ArrowUp");                
             }
+
+            Controls.KeyUp("ArrowUp");
 
             //assert
             Assert.True(Player.PositionLeft >= Settings.MIN_X);

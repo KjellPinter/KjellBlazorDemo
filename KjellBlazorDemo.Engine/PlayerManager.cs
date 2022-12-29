@@ -43,15 +43,46 @@ namespace KjellBlazorDemo.Engine
         //x y are amounts to move on that axis
         private void Move(int x, int y)
         {
-            if ((PositionLeft + x) < _settings.MIN_X)
-                x = 0;
-
-            if ((PositionTop + y) < _settings.MIN_Y)
-                y = 0;
-
+            x = ValidateHorizontalMovement(x);
+            y = ValidateVerticalMovement(y);
+            
+            IsMovingHorizontally = (x != 0);
+            
             SetFacingDirectionAndAnimate(x, y);
             PositionLeft += x;
             PositionTop += y;
+        }
+
+        /// <summary>
+        /// Returns 0 when potential movement is invalid
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>x value</returns>
+        private int ValidateHorizontalMovement(int x)
+        {
+            if (x < 0)
+            {
+                if (PositionLeft + x < _settings.MIN_X)
+                    x = 0;
+            }
+
+            return x;
+        }
+
+        /// <summary>
+        /// Returns 0 when potential movement is invalid
+        /// </summary>
+        /// <param name="y"></param>
+        /// <returns>y value</returns>
+        private int ValidateVerticalMovement(int y)
+        {
+            if (y < 0)
+            {
+                if ((PositionTop + y) < _settings.MIN_Y)
+                    y = 0;
+            }
+
+            return y;
         }
 
         private void SetFacingDirectionAndAnimate(int x, int y)
