@@ -6,11 +6,9 @@ namespace KjellBlazorDemo.EngineTests
 {
     public class ControlsTests
     {
-
-        private Mock<IPlayerManager> _player;
-        private Mock<Settings> _settings;
-        private IControls _controls;
-
+        private readonly Mock<IPlayerManager> _player;
+        private readonly Mock<Settings> _settings;
+        private readonly IControls _controls;
         public ControlsTests()
         {
             //global setup 
@@ -83,14 +81,14 @@ namespace KjellBlazorDemo.EngineTests
             //act
             for (int i = 0; i < 50; i++)
             {
-                Controls.KeyDown("ArrowLeft");                
+                Controls.KeyDown("ArrowLeft");
             }
 
             Controls.KeyUp("ArrowLeft");
 
             for (int i = 0; i < 50; i++)
             {
-                Controls.KeyDown("ArrowUp");                
+                Controls.KeyDown("ArrowUp");
             }
 
             Controls.KeyUp("ArrowUp");
@@ -99,7 +97,5 @@ namespace KjellBlazorDemo.EngineTests
             Assert.True(Player.PositionLeft >= Settings.MIN_X);
             Assert.True(Player.PositionTop >= Settings.MIN_Y);
         }
-
-
     }
 }
