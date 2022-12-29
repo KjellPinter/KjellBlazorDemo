@@ -16,6 +16,7 @@
         /// </summary>
         public string? MessageText { get; set; }
         public bool Visible { get; set; } = true;
+        public bool CollideWithPlayer { get; set; } = true;
 
     }
 }

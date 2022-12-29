@@ -24,16 +24,13 @@ namespace KjellBlazorDemo.App.Logic
             }
 
             MobActions();
-
         }
 
         internal bool RemoveTrashWhichTouchesPlayer()
         {
             bool result = false;
 
-            var cols = Logic.DetectCollisions(AssetList, Player, typeof(Trash));
-
-            foreach (var c in cols)
+            foreach (var c in Logic.DetectCollisions(AssetList, Player, typeof(Trash)))
             {
                 result = true;
                 AssetList.Remove(c);
@@ -44,7 +41,6 @@ namespace KjellBlazorDemo.App.Logic
 
         internal void MobActions()
         {
-
             MobsChasing();
             MobsAttacking();
         }
@@ -59,7 +55,6 @@ namespace KjellBlazorDemo.App.Logic
 
         private void MoveMobTowardsPlayer(Mob mob)
         {
-
             mob.AnimateRun();
 
             if (mob.Top < Player.PositionTop)
@@ -90,7 +85,7 @@ namespace KjellBlazorDemo.App.Logic
             foreach (Mob m in cols)
             {
                 m.AnimateAttack();
-                m.IsChasing = false; 
+                m.IsChasing = false;
                 m.MessageText = "";
             }
         }

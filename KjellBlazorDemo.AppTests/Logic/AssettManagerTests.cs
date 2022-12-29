@@ -40,7 +40,8 @@ namespace KjellBlazorDemo.AppTests.Logic
             assetManager.PopulateTrash(list, 5);
 
             //assert
-            Assert.Equal(5, list.Count);
+            var typedList = list.OfType<Trash>().ToList();
+            Assert.Equal(5, typedList.Count);
         }
 
         [Fact]
@@ -53,7 +54,23 @@ namespace KjellBlazorDemo.AppTests.Logic
             assetManager.PopulateMobs(list, 5);
 
             //assert
-            Assert.Equal(5, list.Count);
+            var typedList = list.OfType<Mob>().ToList();
+            Assert.Equal(5, typedList.Count);
         }
+
+        [Fact]
+        public void WallPopulates()
+        {
+            //arrange
+            var list = new List<Asset>();
+
+            //act
+            assetManager.PopulateWalls(list, 5);
+            var typedList = list.OfType<Wall>().ToList();
+
+            //assert
+            Assert.Equal(5, typedList.Count);
+        }
+
     }
 }

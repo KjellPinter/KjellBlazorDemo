@@ -4,12 +4,13 @@ namespace KjellBlazorDemo.App.Logic
 {
     internal class AssetManager
     {
-
+            
         internal void ResetAssets(List<Asset> list)
         {
             list.Clear();
             PopulateTrash(list, 5);
             PopulateMobs(list, 1);
+            PopulateWalls(list, 3);
         }
 
         internal void PopulateTrash(List<Asset> list, int count)
@@ -32,7 +33,15 @@ namespace KjellBlazorDemo.App.Logic
                 m.Visible = false;
                 list.Add(m);
             }
-            
+        }
+        internal void PopulateWalls(List<Asset> list, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                var m = new Wall(100+(i*25), 100, 25, 25);
+                m.Visible = true;
+                list.Add(m);
+            }
         }
     }
 }
