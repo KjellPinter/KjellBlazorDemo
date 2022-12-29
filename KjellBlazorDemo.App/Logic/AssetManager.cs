@@ -8,9 +8,9 @@ namespace KjellBlazorDemo.App.Logic
         internal void ResetAssets(List<Asset> list)
         {
             list.Clear();
+            PopulateWalls(list, 3);
             PopulateTrash(list, 5);
             PopulateMobs(list, 1);
-            PopulateWalls(list, 3);
         }
 
         internal void PopulateTrash(List<Asset> list, int count)

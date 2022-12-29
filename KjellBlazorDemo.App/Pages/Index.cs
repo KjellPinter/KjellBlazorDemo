@@ -47,7 +47,7 @@ namespace KjellBlazorDemo.App.Pages
             if (!SettingsDialog.ShowDialog)
             {
                 await mainDiv.FocusAsync();
-                await JsRunTime.InvokeVoidAsync("OnScrollEvent");                
+                await JsRunTime.InvokeVoidAsync("OnScrollEvent");
             }
         }
 
