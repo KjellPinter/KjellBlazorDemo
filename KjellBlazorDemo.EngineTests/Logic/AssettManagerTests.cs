@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using KjellBlazorDemo.App.Logic;
-using KjellBlazorDemo.Engine.Models;
+﻿
 
 
-namespace KjellBlazorDemo.AppTests.Logic
+namespace KjellBlazorDemo.EngineTests.Logic
 {
     /// <summary>
     /// TODO: make the counts dynamic based on settings

@@ -1,11 +1,10 @@
-﻿using KjellBlazorDemo.Engine.Models;
-
-namespace KjellBlazorDemo.App.Logic
+﻿
+namespace KjellBlazorDemo.Engine.GameLogic
 {
-    internal class AssetManager
+    public class AssetManager
     {
-            
-        internal void ResetAssets(List<Asset> list)
+
+        public void ResetAssets(List<Asset> list)
         {
             list.Clear();
             PopulateWalls(list, 3);
@@ -13,7 +12,7 @@ namespace KjellBlazorDemo.App.Logic
             PopulateMobs(list, 1);
         }
 
-        internal void PopulateTrash(List<Asset> list, int count)
+        public void PopulateTrash(List<Asset> list, int count)
         {
             var rnd = new Random();
 
@@ -25,7 +24,7 @@ namespace KjellBlazorDemo.App.Logic
             }
         }
 
-        internal void PopulateMobs(List<Asset> list, int count)
+        public void PopulateMobs(List<Asset> list, int count)
         {
             for (int i = 0; i < count; i++)
             {
@@ -34,7 +33,7 @@ namespace KjellBlazorDemo.App.Logic
                 list.Add(m);
             }
         }
-        internal void PopulateWalls(List<Asset> list, int count)
+        public void PopulateWalls(List<Asset> list, int count)
         {
             for (int i = 0; i < count; i++)
             {

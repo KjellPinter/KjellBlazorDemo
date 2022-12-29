@@ -2,6 +2,7 @@ using KjellBlazorDemo.App;
 using KjellBlazorDemo.App.Logic;
 using KjellBlazorDemo.App.Repositories;
 using KjellBlazorDemo.Engine;
+using KjellBlazorDemo.Engine.GameLogic;
 using KjellBlazorDemo.Engine.Interfaces;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

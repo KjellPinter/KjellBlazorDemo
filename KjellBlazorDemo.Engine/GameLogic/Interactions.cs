@@ -1,7 +1,4 @@
-﻿using KjellBlazorDemo.Engine.Models;
-using KjellBlazorDemo.Engine;
-using KjellBlazorDemo.Engine.Interfaces;
-
+﻿
 namespace KjellBlazorDemo.App.Logic
 {
     public class Interactions
@@ -11,7 +8,7 @@ namespace KjellBlazorDemo.App.Logic
         private List<Asset> AssetList = null!;
         private ILogic Logic = null!;
 
-        internal void CollisionDetect(List<Asset> assetList, IPlayerManager player, ILogic logic)
+        public void CollisionDetect(List<Asset> assetList, IPlayerManager player, ILogic logic)
         {
             Player = player;
             AssetList = assetList;
@@ -26,7 +23,7 @@ namespace KjellBlazorDemo.App.Logic
             MobActions();
         }
 
-        internal bool RemoveTrashWhichTouchesPlayer()
+        public bool RemoveTrashWhichTouchesPlayer()
         {
             bool result = false;
 
@@ -39,13 +36,13 @@ namespace KjellBlazorDemo.App.Logic
             return result;
         }
 
-        internal void MobActions()
+        public void MobActions()
         {
             MobsChasing();
             MobsAttacking();
         }
 
-        internal void MobsChasing()
+        public void MobsChasing()
         {
             List<Mob> mobs = AssetList.Where(o => o.GetType() == typeof(Mob))
                 .OfType<Mob>().Where(m => m.IsChasing).ToList();
