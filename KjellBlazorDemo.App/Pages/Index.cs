@@ -54,6 +54,7 @@ namespace KjellBlazorDemo.App.Pages
         protected override Task OnInitializedAsync()
         {
             AssetManager.ResetAssets(AssetList);
+            Player.Assets = AssetList; //Player manager needs reference to asset list so it can detect collisions
 
             _timer = new System.Timers.Timer
             {

@@ -1,4 +1,6 @@
-﻿namespace KjellBlazorDemo.Engine.Models
+﻿using System.Drawing;
+
+namespace KjellBlazorDemo.Engine.Models
 {
     abstract public class Asset
     {
@@ -17,6 +19,11 @@
         public string? MessageText { get; set; }
         public bool Visible { get; set; } = true;
         public bool CollideWithPlayer { get; set; } = true;
+        
+        public Rectangle Rectangle()
+        {
+            return new Rectangle(this.Left, this.Top, this.Width, this.Height);
+        }
 
     }
 }

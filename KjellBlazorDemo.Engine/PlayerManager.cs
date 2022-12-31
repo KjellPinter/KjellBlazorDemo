@@ -1,5 +1,7 @@
-﻿using KjellBlazorDemo.Engine.Interfaces;
+﻿using KjellBlazorDemo.App.Logic;
+using KjellBlazorDemo.Engine.Interfaces;
 using KjellBlazorDemo.Engine.Models;
+using System.Drawing;
 
 namespace KjellBlazorDemo.Engine
 {
@@ -7,15 +9,22 @@ namespace KjellBlazorDemo.Engine
     {
         public int PositionTop { get; set; }
         public int PositionLeft { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        
         public Character Character { get; set; }
         private readonly Settings _settings;
         public bool IsMovingHorizontally { get; set; }
+
+        public List<Asset>? Assets { get; set; }
 
         public PlayerManager(Settings settings)
         {
             _settings = settings;
             PositionTop = 100;
             PositionLeft = 200;
+            Width = 20;
+            Height = 29;
             this.Character = new Character();
         }
 
@@ -51,6 +60,30 @@ namespace KjellBlazorDemo.Engine
             SetFacingDirectionAndAnimate(x, y);
             PositionLeft += x;
             PositionTop += y;
+
+            if (DetectClipping())
+            {
+                PositionLeft -= x;
+                PositionTop -= y;
+            }
+        }
+        
+        private bool DetectClipping()
+        {
+            if (Assets is not null)
+            {
+                foreach (var wall in Assets.Where(o => o.GetType() == typeof(Wall)))
+                {
+                    var isPlayerWallCollision = wall.Rectangle().IntersectsWith(Rectangle());
+                    if (isPlayerWallCollision)
+                    {
+                        return true;
+                    }
+                }
+            }
+            
+            return false;
+
         }
 
         /// <summary>
@@ -110,6 +143,10 @@ namespace KjellBlazorDemo.Engine
                     Character.FaceBack();
                 }
             }
+        }
+        public Rectangle Rectangle()
+        {
+            return new Rectangle(this.PositionLeft, this.PositionTop, Width, Height);
         }
     }
 }
