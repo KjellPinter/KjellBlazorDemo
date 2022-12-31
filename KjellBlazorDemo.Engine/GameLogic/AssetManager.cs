@@ -35,9 +35,23 @@ namespace KjellBlazorDemo.Engine.GameLogic
         }
         public void PopulateWalls(List<Asset> list, int count)
         {
+            var rnd = new Random();
+            var x = rnd.Next(500);
+            var y = rnd.Next(500);
+            
+            for (int i = 0; i < count; i++)
+            {                         
+                var m = new Wall(x+(i*25), y, 25, 25);
+                m.Visible = true;
+                list.Add(m);
+            }
+
+            x = rnd.Next(500);
+            y = rnd.Next(500);
+            
             for (int i = 0; i < count; i++)
             {
-                var m = new Wall(100+(i*25), 100, 25, 25);
+                var m = new Wall(x, y + (i * 25), 25, 25);
                 m.Visible = true;
                 list.Add(m);
             }
