@@ -61,11 +61,11 @@ namespace KjellBlazorDemo.EngineTests.Logic
             var list = new List<Asset>();
 
             //act
-            assetManager.PopulateWalls(list, 5);
+            assetManager.PopulateWalls(list, 2, 5);
             var typedList = list.OfType<Wall>().ToList();
 
-            //assert
-            Assert.Equal(5, typedList.Count);
+            //assert total 10 wall units, 2 groupings of 5
+            Assert.Equal(10, typedList.Count);
         }
 
     }

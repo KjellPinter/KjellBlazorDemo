@@ -7,7 +7,7 @@ namespace KjellBlazorDemo.Engine.GameLogic
         public void ResetAssets(List<Asset> list)
         {
             list.Clear();
-            PopulateWalls(list, 3);
+            PopulateWalls(list, 2, 4);
             PopulateTrash(list, 5);
             PopulateMobs(list, 1);
         }
@@ -33,28 +33,24 @@ namespace KjellBlazorDemo.Engine.GameLogic
                 list.Add(m);
             }
         }
-        public void PopulateWalls(List<Asset> list, int count)
+        public void PopulateWalls(List<Asset> list, int wallCount, int unitsPerWallGrouping)
         {
             var rnd = new Random();
-            var x = rnd.Next(500);
-            var y = rnd.Next(500);
             
-            for (int i = 0; i < count; i++)
-            {                         
-                var m = new Wall(x+(i*25), y, 25, 25);
-                m.Visible = true;
-                list.Add(m);
+            for (int i = 0; i < wallCount; i++)
+            {
+                int x = rnd.Next(500);
+                int y = rnd.Next(500);
+
+                for (int j = 0; j < unitsPerWallGrouping; j++)
+                {
+                    var m = new Wall(x, y + (j * 25), 25, 25);
+                    m.Visible = true;
+                    list.Add(m);
+                }
             }
 
-            x = rnd.Next(500);
-            y = rnd.Next(500);
             
-            for (int i = 0; i < count; i++)
-            {
-                var m = new Wall(x, y + (i * 25), 25, 25);
-                m.Visible = true;
-                list.Add(m);
-            }
         }
     }
 }

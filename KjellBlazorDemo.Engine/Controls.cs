@@ -20,6 +20,10 @@ namespace KjellBlazorDemo.Engine
         {
             _keyDownCommands = new Dictionary<string, Action>()
             {
+                { "KeyA", () => _playerManager.MoveLeft() },
+                { "KeyS", () => _playerManager.MoveDown() },
+                { "KeyD", () => _playerManager.MoveRight() },
+                { "KeyW", () => _playerManager.MoveUp() },
                 { "ArrowLeft", () => _playerManager.MoveLeft() },
                 { "ArrowRight", () => _playerManager.MoveRight() },
                 { "ArrowUp", () => _playerManager.MoveUp() },
@@ -29,6 +33,10 @@ namespace KjellBlazorDemo.Engine
 
             _keyUpCommands = new Dictionary<string, Action>()
             {
+                { "KeyA", () => { } },
+                { "KeyS", () => { } },
+                { "KeyD", () => { } },
+                { "KeyW", () => { } },
                 { "ArrowLeft", () => _playerManager.MoveLeft() },
                 { "ArrowRight", () => _playerManager.MoveRight() },
                 { "ArrowUp", () => _playerManager.MoveUp() },
