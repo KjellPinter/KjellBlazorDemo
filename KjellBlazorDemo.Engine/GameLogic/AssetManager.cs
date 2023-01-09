@@ -33,7 +33,7 @@ namespace KjellBlazorDemo.Engine.GameLogic
                 list.Add(m);
             }
         }
-        public void PopulateWalls(List<Asset> list, int wallCount, int unitsPerWallGrouping)
+        public void PopulateWalls(List<Asset> list, int wallCount, int wallLength)
         {
             var rnd = new Random();
             
