@@ -42,7 +42,7 @@ namespace KjellBlazorDemo.Engine.GameLogic
                 int x = rnd.Next(500);
                 int y = rnd.Next(500);
 
-                for (int j = 0; j < unitsPerWallGrouping; j++)
+                for (int j = 0; j < wallLength; j++)
                 {
                     var m = new Wall(x, y + (j * 25), 25, 25);
                     m.Visible = true;
