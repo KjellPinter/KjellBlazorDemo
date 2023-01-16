@@ -33,23 +33,23 @@ namespace KjellBlazorDemo.Engine
 
             _keyUpCommands = new Dictionary<string, Action>()
             {
-                { "KeyA", () => { } },
+                { "KeyA", () => _playerManager.StopHorizontalMovement() },
+                { "KeyD", () => _playerManager.StopHorizontalMovement() },
                 { "KeyS", () => { } },
-                { "KeyD", () => { } },
                 { "KeyW", () => { } },
-                { "ArrowLeft", () => _playerManager.MoveLeft() },
-                { "ArrowRight", () => _playerManager.MoveRight() },
-                { "ArrowUp", () => _playerManager.MoveUp() },
-                { "ArrowDown", () => _playerManager.MoveDown() },
+                { "ArrowLeft", () => _playerManager.StopHorizontalMovement() },
+                { "ArrowRight", () => _playerManager.StopHorizontalMovement() },
+                { "ArrowUp", () => { } },
+                { "ArrowDown", () => { } },
             };
         }
-
+        
         public async void KeyDown(string key)
         {
             if (_keyDownCommands.ContainsKey(key) && !_keysDown.Contains(key))
             {
                 _keyDownCommands[key].Invoke();
-
+                
                 //if there is a keyup then we keep firing this command until keyup fires
                 if (_keyUpCommands.ContainsKey(key))
                 {
@@ -64,19 +64,19 @@ namespace KjellBlazorDemo.Engine
             while (_keysDown.Contains(key))
             {
                 await Task.Delay(100);
-                _keyDownCommands[key].Invoke();
+
+                //check again in case it was removed during above delay
+                if (_keysDown.Contains(key))
+                {
+                    _keyDownCommands[key].Invoke();
+                }
             }
         }
 
-        public void KeyUp(string key)
-        {
-            //track if moving horizontally so we dont switch to up/down sprite
-            if (key == "ArrowLeft" || key == "ArrowRight")
-            {
-                _playerManager.IsMovingHorizontally = false;
-            }
-
+        public async void KeyUp(string key)
+        {            
             _keysDown.Remove(key);
+            _keyUpCommands[key].Invoke();
         }
     }
 }

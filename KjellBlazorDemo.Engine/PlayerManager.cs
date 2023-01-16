@@ -54,8 +54,8 @@ namespace KjellBlazorDemo.Engine
         {
             x = ValidateHorizontalMovement(x);
             y = ValidateVerticalMovement(y);
-            
-            IsMovingHorizontally = (x != 0);
+
+            if (x != 0) { IsMovingHorizontally = true; }
             
             SetFacingDirectionAndAnimate(x, y);
             PositionLeft += x;
@@ -66,6 +66,11 @@ namespace KjellBlazorDemo.Engine
                 PositionLeft -= x;
                 PositionTop -= y;
             }
+        }
+
+        public void StopHorizontalMovement()
+        {
+            this.IsMovingHorizontally = false;
         }
         
         private bool DetectClipping()
@@ -121,6 +126,7 @@ namespace KjellBlazorDemo.Engine
         private void SetFacingDirectionAndAnimate(int x, int y)
         {
             //dont do anything for 0
+          
             if (x > 0)
             {
                 Character.FaceRight();
@@ -131,14 +137,13 @@ namespace KjellBlazorDemo.Engine
                 Character.FaceLeft();
             }
 
-            if (!IsMovingHorizontally)
+            if (!IsMovingHorizontally && y != 0)
             {
                 if (y > 0)
                 {
                     Character.FaceForward();
                 }
-
-                if (y < 0)
+                else
                 {
                     Character.FaceBack();
                 }

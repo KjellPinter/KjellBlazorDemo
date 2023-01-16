@@ -23,7 +23,6 @@ namespace KjellBlazorDemo.Engine.Interfaces
         public void SpecialMove();
         public Character Character { get; set; }
         public Rectangle Rectangle();
-
-
+        void StopHorizontalMovement();
     }      
 }
