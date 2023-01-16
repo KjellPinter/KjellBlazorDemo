@@ -29,8 +29,10 @@ namespace KjellBlazorDemo.EngineTests
 
             //act
             _player.MoveDown();
+            _player.StopVerticalMovement();
             _player.MoveRight();
-
+            _player.StopHorizontalMovement();
+            
             //assert
             Assert.Equal(_player.PositionTop, positionTop + _settings.MOVEMENT_DISTANCE);
             Assert.Equal(_player.PositionLeft, positionLeft + _settings.MOVEMENT_DISTANCE);

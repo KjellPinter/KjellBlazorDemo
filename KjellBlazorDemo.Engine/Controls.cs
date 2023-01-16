@@ -39,8 +39,8 @@ namespace KjellBlazorDemo.Engine
                 { "KeyW", () => { } },
                 { "ArrowLeft", () => _playerManager.StopHorizontalMovement() },
                 { "ArrowRight", () => _playerManager.StopHorizontalMovement() },
-                { "ArrowUp", () => { } },
-                { "ArrowDown", () => { } },
+                { "ArrowUp", () => _playerManager.StopVerticalMovement() },
+                { "ArrowDown", () => _playerManager.StopVerticalMovement() }
             };
         }
         
@@ -74,7 +74,7 @@ namespace KjellBlazorDemo.Engine
         }
 
         public async void KeyUp(string key)
-        {            
+        {
             _keysDown.Remove(key);
             _keyUpCommands[key].Invoke();
         }

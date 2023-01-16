@@ -14,9 +14,17 @@ namespace KjellBlazorDemo.Engine
         
         public Character Character { get; set; }
         private readonly Settings _settings;
-        public bool IsMovingHorizontally { get; set; }
+        public HorizontalMovement HorizontalMovementDirection { get; set; }
+        public bool IsMovingVertically { get; set; }
 
         public List<Asset>? Assets { get; set; }
+
+        public enum HorizontalMovement
+        {
+            Left,
+            Right,
+            None
+        }
 
         public PlayerManager(Settings settings)
         {
@@ -25,6 +33,7 @@ namespace KjellBlazorDemo.Engine
             PositionLeft = 200;
             Width = 20;
             Height = 29;
+            HorizontalMovementDirection = HorizontalMovement.None;
             this.Character = new Character();
         }
 
@@ -55,8 +64,28 @@ namespace KjellBlazorDemo.Engine
             x = ValidateHorizontalMovement(x);
             y = ValidateVerticalMovement(y);
 
-            if (x != 0) { IsMovingHorizontally = true; }
-            
+            if (x != 0)
+            {
+                HorizontalMovementDirection = x > 0 ? HorizontalMovement.Right : HorizontalMovement.Left;
+            }
+
+            if (y != 0) { IsMovingVertically = true; }
+
+            //if we are moving on both axis then do then at the same time in order to smooth it out
+            if (HorizontalMovementDirection != HorizontalMovement.None && IsMovingVertically)
+            {
+                //if this is a call for horizontal movment, cancel it.  Otherwise we end up doubling movement speed
+                if (x != 0)
+                {
+                    x = 0;
+                }
+                else
+                {
+                    //add horizontal movement to vertical movement so it becomes one motion.  
+                    x = HorizontalMovementDirection == HorizontalMovement.Left ? -_settings.MOVEMENT_DISTANCE : _settings.MOVEMENT_DISTANCE;
+                }
+            }
+
             SetFacingDirectionAndAnimate(x, y);
             PositionLeft += x;
             PositionTop += y;
@@ -70,9 +99,14 @@ namespace KjellBlazorDemo.Engine
 
         public void StopHorizontalMovement()
         {
-            this.IsMovingHorizontally = false;
+            HorizontalMovementDirection = HorizontalMovement.None;
         }
-        
+
+        public void StopVerticalMovement()
+        {
+            this.IsMovingVertically = false;
+        }
+
         private bool DetectClipping()
         {
             if (Assets is not null)
@@ -137,7 +171,7 @@ namespace KjellBlazorDemo.Engine
                 Character.FaceLeft();
             }
 
-            if (!IsMovingHorizontally && y != 0)
+            if (HorizontalMovementDirection == HorizontalMovement.None && y != 0)
             {
                 if (y > 0)
                 {
