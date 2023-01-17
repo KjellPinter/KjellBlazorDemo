@@ -65,7 +65,7 @@ namespace KjellBlazorDemo.EngineTests.Logic
             var typedList = list.OfType<Wall>().ToList();
 
             //assert total 10 wall units, 2 groupings of 5
-            Assert.Equal(10, typedList.Count);
+            Assert.Equal(20, typedList.Count); // *2 cause it now does vertial and horizontal
         }
 
     }

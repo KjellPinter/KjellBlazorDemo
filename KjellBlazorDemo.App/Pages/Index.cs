@@ -34,6 +34,11 @@ namespace KjellBlazorDemo.App.Pages
         private void HandleKeyDown(KeyboardEventArgs a)
         {
             Controls.KeyDown(a.Code);
+
+            if (a.Code == "Digit1")
+            {
+                JsRunTime.InvokeVoidAsync("PlayAudioFile", "/Sounds/confusion.ogg");
+            }
             
             if (a.Code == "Digit2") {
                 JsRunTime.InvokeVoidAsync("PlayAudioFile", "/Sounds/zap.ogg");

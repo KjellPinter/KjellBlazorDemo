@@ -36,7 +36,8 @@ namespace KjellBlazorDemo.Engine.GameLogic
         public void PopulateWalls(List<Asset> list, int wallCount, int wallLength)
         {
             var rnd = new Random();
-            
+
+            //horizontal walls
             for (int i = 0; i < wallCount; i++)
             {
                 int x = rnd.Next(500);
@@ -50,7 +51,21 @@ namespace KjellBlazorDemo.Engine.GameLogic
                 }
             }
 
-            
+            //vertical walls
+            for (int i = 0; i < wallCount; i++)
+            {
+                int x = rnd.Next(500);
+                int y = rnd.Next(500);
+
+                for (int j = 0; j < wallLength; j++)
+                {
+                    var m = new Wall(x + (j * 25), y, 25, 25);
+                    m.Visible = true;
+                    list.Add(m);
+                }
+            }
+
+
         }
     }
 }
