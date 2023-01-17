@@ -57,7 +57,11 @@ namespace KjellBlazorDemo.Engine
             var rnd = new Random();
             PositionLeft = rnd.Next(500);
             PositionTop = rnd.Next(500);
+        }
 
+        public void Haste()
+        {
+            _settings.MOVEMENT_DISTANCE = 10;
         }
 
         #endregion

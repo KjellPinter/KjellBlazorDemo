@@ -23,12 +23,13 @@ namespace KjellBlazorDemo.Engine.Interfaces
         public List<Asset> Assets { get; set; }
         public void SpecialMove();
         public Character Character { get; set; }
-        void TeleportRandom();
 
         public Rectangle Rectangle();
         void StopHorizontalMovement();
         void StopVerticalMovement();
 
-     
+        //spells
+        void TeleportRandom();
+        void Haste();
     }      
 }

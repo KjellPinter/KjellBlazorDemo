@@ -30,6 +30,7 @@ namespace KjellBlazorDemo.Engine
                 { "ArrowDown", () => _playerManager.MoveDown() },
                 //spells
                 { "Digit1", () => _playerManager.TeleportRandom() },
+                { "Digit2", () => _playerManager.Haste() },
                 { "Space", () => _playerManager.TeleportRandom() }
             };
 
@@ -42,7 +43,10 @@ namespace KjellBlazorDemo.Engine
                 { "ArrowLeft", () => _playerManager.StopHorizontalMovement() },
                 { "ArrowRight", () => _playerManager.StopHorizontalMovement() },
                 { "ArrowUp", () => _playerManager.StopVerticalMovement() },
-                { "ArrowDown", () => _playerManager.StopVerticalMovement() }
+                { "ArrowDown", () => _playerManager.StopVerticalMovement() },
+                { "Digit1", () => { } },
+                { "Digit2", () => { } },
+                { "Space", () => { } },
             };
         }
         
