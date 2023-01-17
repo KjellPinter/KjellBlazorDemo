@@ -58,7 +58,7 @@ namespace KjellBlazorDemo.App.Pages
             if (!SettingsDialog.ShowDialog)
             {
                 await mainDiv.FocusAsync();
-                await JsRunTime.InvokeVoidAsync("OnScrollEvent");                
+                await JsRunTime.InvokeVoidAsync("OnScrollEvent");
             }
         }
 
@@ -87,19 +87,10 @@ namespace KjellBlazorDemo.App.Pages
         {
             Interactions.CollisionDetect(AssetList, Player, Logic);
 
-            if (AssetList.Count(o => o.Name == "trash") < 5)
-            {
-                if (HelpCounter == 0)
-                {
-                    Message = "press space for your special move";
-                    HelpCounter = 1;
-                }
-            }
-
             if (!AssetList.Any(o => o.Name == "trash"))
             {
-                MessageDialog.Show("You've collected all the trash, the potato troll thanks you. ");
-                AssetManager.ResetAssets(AssetList);
+                Message = "Level 2";
+                AssetManager.ResetAssets(AssetList, 2);
             }
 
             this.StateHasChanged();

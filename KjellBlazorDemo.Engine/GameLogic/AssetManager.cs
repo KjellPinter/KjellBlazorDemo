@@ -4,12 +4,12 @@ namespace KjellBlazorDemo.Engine.GameLogic
     public class AssetManager
     {
 
-        public void ResetAssets(List<Asset> list)
+        public void ResetAssets(List<Asset> list, int MobCount = 1)
         {
             list.Clear();
             PopulateWalls(list, 2, 4);
             PopulateTrash(list, 5);
-            PopulateMobs(list, 1);
+            PopulateMobs(list, MobCount);
         }
 
         public void PopulateTrash(List<Asset> list, int count)
@@ -26,9 +26,12 @@ namespace KjellBlazorDemo.Engine.GameLogic
 
         public void PopulateMobs(List<Asset> list, int count)
         {
+            
             for (int i = 0; i < count; i++)
             {
-                var m = new Mob("troll", -8, -3, 25, 25);
+                var m = new Mob("troll", -8, -3 , 25, 25);
+                m.Top = 100;
+                m.Left = 100 * i;
                 m.Visible = false;
                 list.Add(m);
             }
