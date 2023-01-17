@@ -50,6 +50,20 @@ namespace KjellBlazorDemo.Engine
             PositionLeft = 200;
         }
 
+        #region Spells
+
+        public void TeleportRandom()
+        {
+            var rnd = new Random();
+            PositionLeft = rnd.Next(500);
+            PositionTop = rnd.Next(500);
+
+        }
+
+        #endregion
+
+        #region Player Movement
+
         public void MoveRight() => Move(_settings.MOVEMENT_DISTANCE, 0);
 
         public void MoveLeft() => Move(-_settings.MOVEMENT_DISTANCE, 0);
@@ -187,5 +201,7 @@ namespace KjellBlazorDemo.Engine
         {
             return new Rectangle(this.PositionLeft, this.PositionTop, Width, Height);
         }
+
+        #endregion
     }
 }

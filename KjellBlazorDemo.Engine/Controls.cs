@@ -28,7 +28,9 @@ namespace KjellBlazorDemo.Engine
                 { "ArrowRight", () => _playerManager.MoveRight() },
                 { "ArrowUp", () => _playerManager.MoveUp() },
                 { "ArrowDown", () => _playerManager.MoveDown() },
-                { "Space", () => _playerManager.SpecialMove() }
+                //spells
+                { "Digit1", () => _playerManager.TeleportRandom() },
+                { "Space", () => _playerManager.TeleportRandom() }
             };
 
             _keyUpCommands = new Dictionary<string, Action>()

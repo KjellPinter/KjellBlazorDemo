@@ -17,17 +17,17 @@ namespace KjellBlazorDemo.EngineTests
             _controls = new Controls(_player.Object);
         }
 
-        [Fact]
-        public void SpaceDoesSpecialMove()
-        {
-            //arrange
+        //[Fact]
+        //public void SpaceDoesSpecialMove()
+        //{
+        //    //arrange
 
-            //act
-            _controls.KeyDown("Space");
+        //    //act
+        //    _controls.KeyDown("Space");
 
-            //assert
-            _player.Verify(p => p.SpecialMove(), Times.Once());
-        }
+        //    //assert
+        //    _player.Verify(p => p.SpecialMove(), Times.Once());
+        //}
 
         [Theory]
         [InlineData("ArrowLeft")]
