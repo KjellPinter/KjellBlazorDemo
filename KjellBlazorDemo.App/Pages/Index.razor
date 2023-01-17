@@ -16,7 +16,6 @@
 
 <PageTitle>Trash Troll @version</PageTitle>
 
-
 @code
 {
     Version version = typeof(Program).Assembly.GetName().Version;
@@ -34,6 +33,10 @@
 <div id="mainDiv" @ref="mainDiv" @onkeydown="HandleKeyDown" @onkeyup="HandleKeyUp" @onkeydown:preventDefault tabindex="-1">   
     
     <div id="message">@Message</div>
+
+    <audio id="player">
+        <source id="playerSource" src="" />
+    </audio>
     
     <!--todo: see if this is viable, for the moment it will render but the keydown doesnt work,
         nor does character select.  Seems we need to add a bunch of code which ends up negating the 

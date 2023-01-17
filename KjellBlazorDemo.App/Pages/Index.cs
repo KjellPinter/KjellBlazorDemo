@@ -28,14 +28,20 @@ namespace KjellBlazorDemo.App.Pages
             MessageDialog = new MessageDialog();
             DecisionDialog = new DecisionDialog();
             
-            Message = "Move with the arrow keys and pick up the discarded cans";
+            Message = "Move with the arrow keys and pick up the discarded cans";            
         }
 
         private void HandleKeyDown(KeyboardEventArgs a)
         {
             Controls.KeyDown(a.Code);
+            
+            if (a.Code == "Digit2") {
+                JsRunTime.InvokeVoidAsync("PlayAudioFile", "/Sounds/zap.ogg");
+            }
+            
         }
 
+        
         private void HandleKeyUp(KeyboardEventArgs a)
         {
             Controls.KeyUp(a.Code);
@@ -47,7 +53,7 @@ namespace KjellBlazorDemo.App.Pages
             if (!SettingsDialog.ShowDialog)
             {
                 await mainDiv.FocusAsync();
-                await JsRunTime.InvokeVoidAsync("OnScrollEvent");
+                await JsRunTime.InvokeVoidAsync("OnScrollEvent");                
             }
         }
 
