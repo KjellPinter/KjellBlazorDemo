@@ -125,7 +125,7 @@ namespace KjellBlazorDemo.Engine
             this.IsMovingVertically = false;
         }
 
-        private bool DetectClipping()
+        public bool DetectClipping()
         {
             if (Assets is not null)
             {
