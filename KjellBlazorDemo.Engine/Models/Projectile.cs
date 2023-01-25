@@ -27,12 +27,10 @@ namespace KjellBlazorDemo.Engine.Models
         }
 
         public void ChaseTarget()
-        {
-
-            //DETECT COLLISION HERE INSTEAD OF INTERACTIONS???  OR EVEN IN ASSET?
-            
+        {            
             MoveTowardsPoint(Target.Left, Target.Top);
 
+            //check if we hit the target
             if (this.Left == Target.Left && this.Top == Target.Top)
             {
                 Assets.Remove(this);
