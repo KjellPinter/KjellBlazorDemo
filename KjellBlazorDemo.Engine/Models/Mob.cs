@@ -18,7 +18,7 @@
             CycleCounter = 0;
         }
 
-        public void ChasePlayer()
+        public void ChasePlayer(IPlayerManager player)
         {
             if (IsChasing == false)
             {
@@ -26,6 +26,11 @@
                 IsChasing = true;
                 MessageText = "HEY!";
                 Visible = true;
+            }
+            else
+            {
+                this.MovementAnimation();
+                this.MoveTowardsPoint(player.PositionLeft, player.PositionTop);
             }
         }
         
@@ -54,7 +59,7 @@
             }
         }
 
-        public void AnimateRun()
+        public void MovementAnimation()
         {
             CycleCounter++;
 

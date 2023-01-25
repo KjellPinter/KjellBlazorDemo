@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KjellBlazorDemo.Engine.Models
 {
-    public class Projectile : Asset        
+    public class Projectile : Asset
     {
         private Asset Target;
 
@@ -26,23 +26,7 @@ namespace KjellBlazorDemo.Engine.Models
 
         public void ChaseTarget()
         {
-            if (this.Target.Left > this.Left)
-            {
-                this.Left++;
-            }
-            else
-            {
-                this.Left--;
-            }
-
-            if (this.Target.Top > this.Top)
-            {
-                this.Top++;
-            }
-            else
-            {
-                this.Top--;
-            }
+            MoveTowardsPoint(Target.Left, Target.Top);
         }
 
     }

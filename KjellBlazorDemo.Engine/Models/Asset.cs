@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Numerics;
 
 namespace KjellBlazorDemo.Engine.Models
 {
@@ -23,6 +24,29 @@ namespace KjellBlazorDemo.Engine.Models
         public Rectangle Rectangle()
         {
             return new Rectangle(this.Left, this.Top, this.Width, this.Height);
+        }
+
+        public void MoveTowardsPoint(int x, int y)
+        {
+            if (this.Top < y)
+            {
+                ++this.Top;
+            }
+
+            if (this.Top > y)
+            {
+                --this.Top;
+            }
+            
+            if (this.Left < x)
+            {
+                ++this.Left;
+            }
+
+            if (this.Left > x)
+            {
+                --this.Left;
+            }
         }
 
     }
