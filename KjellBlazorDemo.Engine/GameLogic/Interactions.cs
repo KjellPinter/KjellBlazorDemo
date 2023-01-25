@@ -21,6 +21,7 @@ namespace KjellBlazorDemo.App.Logic
             }
 
             MobActions();
+            ProjectileActions();
         }
 
         public bool RemoveTrashWhichTouchesPlayer()
@@ -40,6 +41,14 @@ namespace KjellBlazorDemo.App.Logic
         {
             MobsChasing();
             MobsAttacking();
+        }
+
+        public void ProjectileActions()
+        {
+            List<Projectile> projectiles = AssetList.Where(o => o.GetType() == typeof(Projectile))
+                .OfType<Projectile>().ToList();
+
+            projectiles.ForEach(o => o.ChaseTarget());
         }
 
         public void MobsChasing()

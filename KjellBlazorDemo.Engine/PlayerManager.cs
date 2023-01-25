@@ -64,6 +64,20 @@ namespace KjellBlazorDemo.Engine
             _settings.MOVEMENT_DISTANCE = 10;
         }
 
+        public void Fireball()
+        {
+            //look for target
+            var target = Assets?.FirstOrDefault(o => o.GetType() == typeof(Mob));
+
+            //create fireball asset
+            if (target != null)
+            {
+                var fireball = new Projectile("fireball", target, this.PositionLeft, this.PositionTop);
+                Assets.Add(fireball);
+            }
+            
+        }
+
         #endregion
 
         #region Player Movement
@@ -204,7 +218,7 @@ namespace KjellBlazorDemo.Engine
         public Rectangle Rectangle()
         {
             return new Rectangle(this.PositionLeft, this.PositionTop, Width, Height);
-        }
+        }        
 
         #endregion
     }

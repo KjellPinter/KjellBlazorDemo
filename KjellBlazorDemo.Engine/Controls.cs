@@ -31,6 +31,7 @@ namespace KjellBlazorDemo.Engine
                 //spells
                 { "Digit1", () => _playerManager.TeleportRandom() },
                 { "Digit2", () => _playerManager.Haste() },
+                { "Digit3", () => _playerManager.Fireball() },
                 { "Space", () => _playerManager.TeleportRandom() }
             };
 
@@ -44,9 +45,7 @@ namespace KjellBlazorDemo.Engine
                 { "ArrowRight", () => _playerManager.StopHorizontalMovement() },
                 { "ArrowUp", () => _playerManager.StopVerticalMovement() },
                 { "ArrowDown", () => _playerManager.StopVerticalMovement() },
-                { "Digit1", () => { } },
-                { "Digit2", () => { } },
-                { "Space", () => { } },
+                { "Space", () => { } }
             };
         }
         
@@ -82,7 +81,9 @@ namespace KjellBlazorDemo.Engine
         public async void KeyUp(string key)
         {
             _keysDown.Remove(key);
-            _keyUpCommands[key].Invoke();
+
+            if (_keyUpCommands.ContainsKey(key))
+                _keyUpCommands[key].Invoke();
         }
     }
 }

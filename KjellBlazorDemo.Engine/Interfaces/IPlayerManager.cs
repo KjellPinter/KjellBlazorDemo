@@ -31,5 +31,6 @@ namespace KjellBlazorDemo.Engine.Interfaces
         //spells
         void TeleportRandom();
         void Haste();
+        void Fireball();
     }      
 }

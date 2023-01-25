@@ -25,6 +25,11 @@
     position: absolute;
 }
 
+.fireball {
+    background-image: url(Images/Assetts/fire.png);
+    position: absolute;
+}
+
 #message {
     margin: auto;
     font: Brush Script MT;
