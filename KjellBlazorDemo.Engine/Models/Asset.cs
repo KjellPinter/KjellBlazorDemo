@@ -49,5 +49,10 @@ namespace KjellBlazorDemo.Engine.Models
             }
         }
 
+        public virtual void Stop()
+        {
+            //by default do nothing
+        }
+
     }
 }

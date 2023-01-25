@@ -74,5 +74,10 @@
                 CycleCounter = 0;
             }
         }
+
+        public override void Stop()
+        {
+            IsChasing = false;
+        }
     }
 }

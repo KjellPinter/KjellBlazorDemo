@@ -68,11 +68,13 @@ namespace KjellBlazorDemo.Engine
         {
             //look for target
             var target = Assets?.FirstOrDefault(o => o.GetType() == typeof(Mob));
+            var balls = Assets?.Where(o => o.Name == "fireball");
+            
 
-            //create fireball asset
-            if (target != null)
+            //create fireball asset as long as it has a target and there are less than 4 already
+            if (target != null && balls?.Count() < 3)
             {
-                var fireball = new Projectile("fireball", target, this.PositionLeft, this.PositionTop);
+                var fireball = new Projectile("fireball", target, Assets, this.PositionLeft, this.PositionTop);
                 Assets.Add(fireball);
             }
             
