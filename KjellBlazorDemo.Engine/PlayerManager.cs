@@ -7,8 +7,10 @@ namespace KjellBlazorDemo.Engine
 {
     public class PlayerManager : IPlayerManager
     {
-        public int PositionTop { get; set; }
-        public int PositionLeft { get; set; }
+        //public int Position.Y { get; set; }
+        //public int Position.X { get; set; }
+
+        public Point Position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         
@@ -29,8 +31,7 @@ namespace KjellBlazorDemo.Engine
         public PlayerManager(Settings settings)
         {
             _settings = settings;
-            PositionTop = 100;
-            PositionLeft = 200;
+            Position = new Point(100, 200);
             Width = 20;
             Height = 29;
             HorizontalMovementDirection = HorizontalMovement.None;
@@ -40,14 +41,8 @@ namespace KjellBlazorDemo.Engine
         public override string ToString()
         {
             return String.Concat(this.Character.Name, " (",
-                this.PositionLeft.ToString(), ",",
-                this.PositionTop.ToString(), ")");
-        }
-        public void SpecialMove()
-        {
-            //temporary action
-            PositionTop = 100;
-            PositionLeft = 200;
+                this.Position.X.ToString(), ",",
+                this.Position.Y.ToString(), ")");
         }
 
         #region Spells
@@ -55,8 +50,7 @@ namespace KjellBlazorDemo.Engine
         public void TeleportRandom()
         {
             var rnd = new Random();
-            PositionLeft = rnd.Next(500);
-            PositionTop = rnd.Next(500);
+            Position = new Point(rnd.Next(0, _settings.MAX_X), rnd.Next(0, _settings.MAX_Y));         
         }
 
         public void Haste()
@@ -74,7 +68,7 @@ namespace KjellBlazorDemo.Engine
             //create fireball asset as long as it has a target and there are less than 4 already
             if (target != null && balls?.Count() < 3)
             {
-                var fireball = new Projectile("fireball", target, Assets, this.PositionLeft, this.PositionTop);
+                var fireball = new Projectile("fireball", target, Assets, this.Position.X, this.Position.Y);
                 Assets.Add(fireball);
             }
             
@@ -119,15 +113,15 @@ namespace KjellBlazorDemo.Engine
                     x = HorizontalMovementDirection == HorizontalMovement.Left ? -_settings.MOVEMENT_DISTANCE : _settings.MOVEMENT_DISTANCE;
                 }
             }
-
+            
             SetFacingDirectionAndAnimate(x, y);
-            PositionLeft += x;
-            PositionTop += y;
+            //this.Position.Offset(x, y);
+
+            this.Position = new Point(this.Position.X + x, this.Position.Y + y);
 
             if (DetectClipping())
             {
-                PositionLeft -= x;
-                PositionTop -= y;
+                this.Position = new Point(this.Position.X - x, this.Position.Y - y);
             }
         }
 
@@ -168,7 +162,7 @@ namespace KjellBlazorDemo.Engine
         {
             if (x < 0)
             {
-                if (PositionLeft + x < _settings.MIN_X)
+                if (Position.X + x < _settings.MIN_X)
                     x = 0;
             }
 
@@ -184,7 +178,7 @@ namespace KjellBlazorDemo.Engine
         {
             if (y < 0)
             {
-                if ((PositionTop + y) < _settings.MIN_Y)
+                if ((Position.Y + y) < _settings.MIN_Y)
                     y = 0;
             }
 
@@ -219,7 +213,7 @@ namespace KjellBlazorDemo.Engine
         }
         public Rectangle Rectangle()
         {
-            return new Rectangle(this.PositionLeft, this.PositionTop, Width, Height);
+            return new Rectangle(this.Position.X, this.Position.Y, Width, Height);
         }        
 
         #endregion

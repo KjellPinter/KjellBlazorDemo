@@ -26,24 +26,24 @@ namespace KjellBlazorDemo.Engine.Models
             return new Rectangle(this.Left, this.Top, this.Width, this.Height);
         }
 
-        public void MoveTowardsPoint(int x, int y)
+        public void MoveTowardsPoint(Point Position)
         {
-            if (this.Top < y)
+            if (this.Top < Position.Y)
             {
                 ++this.Top;
             }
 
-            if (this.Top > y)
+            if (this.Top > Position.Y)
             {
                 --this.Top;
             }
             
-            if (this.Left < x)
+            if (this.Left < Position.X)
             {
                 ++this.Left;
             }
 
-            if (this.Left > x)
+            if (this.Left > Position.X)
             {
                 --this.Left;
             }

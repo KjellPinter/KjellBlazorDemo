@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +25,7 @@ namespace KjellBlazorDemo.EngineTests
         public void PlayerMoves()
         {
             
-            int positionTop = _player.PositionTop;
-            int positionLeft = _player.PositionLeft;
+            Point pnt = new Point(_player.Position.X, _player.Position.Y);
 
             //act
             _player.MoveDown();
@@ -34,8 +34,8 @@ namespace KjellBlazorDemo.EngineTests
             _player.StopHorizontalMovement();
             
             //assert
-            Assert.Equal(_player.PositionTop, positionTop + _settings.MOVEMENT_DISTANCE);
-            Assert.Equal(_player.PositionLeft, positionLeft + _settings.MOVEMENT_DISTANCE);
+            Assert.Equal(_player.Position.Y, pnt.Y + _settings.MOVEMENT_DISTANCE);
+            Assert.Equal(_player.Position.X, pnt.X + _settings.MOVEMENT_DISTANCE);
 
         }
 
@@ -44,8 +44,8 @@ namespace KjellBlazorDemo.EngineTests
         {
             //confirm that player torstring returns the name + coordinates
             string tostring = String.Concat(_player.Character.Name, " (",
-                _player.PositionLeft.ToString(), ",",
-                _player.PositionTop.ToString(), ")");
+                _player.Position.X.ToString(), ",",
+                _player.Position.Y.ToString(), ")");
 
             Assert.Equal(tostring, _player.ToString());
 

@@ -10,10 +10,10 @@ namespace KjellBlazorDemo.Engine
 
             //todo: these should definitely not be hardcoded, should take height width into account of both items
             //also https://codereview.stackexchange.com/questions/149782/2d-collision-detection
-            return assets.Where(o => o.Left > (player.PositionLeft - 20)
-                           && o.Left < (player.PositionLeft) + 20
-                           && o.Top > (player.PositionTop - 32)
-                           && o.Top < (player.PositionTop) + 32
+            return assets.Where(o => o.Left > (player.Position.X - 20)
+                           && o.Left < (player.Position.X) + 20
+                           && o.Top > (player.Position.Y - 32)
+                           && o.Top < (player.Position.Y) + 32
                            && o.GetType() == T)
                 .ToList();
         }

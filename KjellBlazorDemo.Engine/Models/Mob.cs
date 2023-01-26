@@ -30,7 +30,7 @@
             else
             {
                 this.MovementAnimation();
-                this.MoveTowardsPoint(player.PositionLeft, player.PositionTop);
+                this.MoveTowardsPoint(player.Position);
             }
         }
         

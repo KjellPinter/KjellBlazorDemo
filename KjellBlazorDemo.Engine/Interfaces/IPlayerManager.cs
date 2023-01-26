@@ -10,8 +10,7 @@ namespace KjellBlazorDemo.Engine.Interfaces
 {
     public interface IPlayerManager
     {
-        public int PositionTop { get; set;  }
-        public int PositionLeft { get; set;  }
+        public Point Position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public void MoveRight();
@@ -21,7 +20,6 @@ namespace KjellBlazorDemo.Engine.Interfaces
         //public bool IsMovingHorizontally { get; set; }
         public bool IsMovingVertically { get; set; }
         public List<Asset> Assets { get; set; }
-        public void SpecialMove();
         public Character Character { get; set; }
 
         public Rectangle Rectangle();

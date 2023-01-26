@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,9 @@ namespace KjellBlazorDemo.Engine.Models
         }
 
         public void ChaseTarget()
-        {            
-            MoveTowardsPoint(Target.Left, Target.Top);
+        {
+            var pnt = new Point(Target.Left, Target.Top);
+            MoveTowardsPoint(pnt);
 
             //check if we hit the target
             if (this.Left == Target.Left && this.Top == Target.Top)

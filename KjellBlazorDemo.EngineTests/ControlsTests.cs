@@ -94,8 +94,8 @@ namespace KjellBlazorDemo.EngineTests
             Controls.KeyUp("ArrowUp");
 
             //assert
-            Assert.True(Player.PositionLeft >= Settings.MIN_X);
-            Assert.True(Player.PositionTop >= Settings.MIN_Y);
+            Assert.True(Player.Position.X >= Settings.MIN_X);
+            Assert.True(Player.Position.Y >= Settings.MIN_Y);
         }
     }
 }
