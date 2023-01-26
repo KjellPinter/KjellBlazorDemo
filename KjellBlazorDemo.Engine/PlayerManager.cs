@@ -115,7 +115,6 @@ namespace KjellBlazorDemo.Engine
             }
             
             SetFacingDirectionAndAnimate(x, y);
-            //this.Position.Offset(x, y);
 
             this.Position = new Point(this.Position.X + x, this.Position.Y + y);
 
