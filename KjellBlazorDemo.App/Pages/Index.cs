@@ -49,6 +49,11 @@ namespace KjellBlazorDemo.App.Pages
                 JsRunTime.InvokeVoidAsync("PlayAudioFile", "/Sounds/flamethrower.ogg");
             }
 
+            if (a.Code == "Digit4")
+            {
+                JsRunTime.InvokeVoidAsync("PlayAudioFile", "/Sounds/meow.ogg");
+            }
+            
         }
 
         

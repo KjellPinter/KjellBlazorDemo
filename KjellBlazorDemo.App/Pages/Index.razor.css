@@ -25,6 +25,11 @@
     position: absolute;
 }
 
+.cat {
+    background-image: url(Images/Assetts/Cat/cat_0_walk.png);
+    position: absolute;
+}
+
 .fireball {
     background-image: url(Images/Assetts/fire.png);
     position: absolute;

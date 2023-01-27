@@ -74,6 +74,17 @@ namespace KjellBlazorDemo.Engine
             
         }
 
+        public void SummonBeast()
+        {
+            var cats = Assets?.Where(o => o.Name == "cat");
+
+            if (cats?.Count() == 0)
+            {
+                var cat = new Beast("cat", this.Position.X, this.Position.Y);
+                Assets.Add(cat);
+            }
+        }
+
         #endregion
 
         #region Player Movement

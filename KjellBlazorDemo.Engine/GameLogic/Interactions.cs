@@ -22,6 +22,7 @@ namespace KjellBlazorDemo.App.Logic
 
             MobActions();
             ProjectileActions();
+            BeastActions();
         }
 
         public bool RemoveTrashWhichTouchesPlayer()
@@ -57,6 +58,14 @@ namespace KjellBlazorDemo.App.Logic
                 .OfType<Mob>().Where(m => m.IsChasing).ToList();
 
             mobs.ForEach(m => m.ChasePlayer(Player));
+        }
+
+        private void BeastActions()
+        {
+            List<Beast> beasts = AssetList.Where(o => o.GetType() == typeof(Beast))
+                .OfType<Beast>().ToList();
+
+            //beasts.ForEach(b => b.MovementAnimation());
         }
 
         private void MobsAttacking()

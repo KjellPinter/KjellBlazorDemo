@@ -32,6 +32,7 @@ namespace KjellBlazorDemo.Engine
                 { "Digit1", () => _playerManager.TeleportRandom() },
                 { "Digit2", () => _playerManager.Haste() },
                 { "Digit3", () => _playerManager.Fireball() },
+                { "Digit4", () => _playerManager.SummonBeast() },
                 { "Space", () => _playerManager.TeleportRandom() }
             };
 
