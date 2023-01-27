@@ -65,7 +65,16 @@ namespace KjellBlazorDemo.App.Logic
             List<Beast> beasts = AssetList.Where(o => o.GetType() == typeof(Beast))
                 .OfType<Beast>().ToList();
 
-            //beasts.ForEach(b => b.MovementAnimation());
+            List<Mob> mobs = AssetList.Where(o => o.GetType() == typeof(Mob))
+                .OfType<Mob>().Where(m => m.IsChasing).ToList();
+
+            if (mobs.Count > 0 && beasts.Count > 0)
+            {
+                beasts[0].SetTarget(mobs[0]);
+                beasts[0].ChaseTarget();  // this gets very choppy and I dont know why yet
+            }
+
+
         }
 
         private void MobsAttacking()
