@@ -71,10 +71,9 @@ namespace KjellBlazorDemo.App.Logic
             if (mobs.Count > 0 && beasts.Count > 0)
             {
                 beasts[0].SetTarget(mobs[0]);
-                beasts[0].ChaseTarget();  // this gets very choppy and I dont know why yet
+                beasts[0].ChaseTarget();  
             }
-
-
+            
         }
 
         private void MobsAttacking()
