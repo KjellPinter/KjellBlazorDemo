@@ -1,17 +1,20 @@
-﻿using KjellBlazorDemo.Engine.Interfaces;
+﻿using KjellBlazorDemo.Engine.GameLogic;
+using KjellBlazorDemo.Engine.Interfaces;
 
 namespace KjellBlazorDemo.Engine
 {
     public class Controls : IControls
     {
         private readonly IPlayerManager _playerManager;
+        private readonly ISpells _spells;
         private Dictionary<string, Action> _keyDownCommands = null!;
         private Dictionary<string, Action> _keyUpCommands = null!;
         private readonly List<string> _keysDown;
 
-        public Controls(IPlayerManager player)
+        public Controls(IPlayerManager player, ISpells spells)
         {
             _playerManager = player;
+            _spells = spells;
             _keysDown = new List<string>();
             DefineCommands();
         }
@@ -29,11 +32,11 @@ namespace KjellBlazorDemo.Engine
                 { "ArrowUp", () => _playerManager.MoveUp() },
                 { "ArrowDown", () => _playerManager.MoveDown() },
                 //spells
-                { "Digit1", () => _playerManager.TeleportRandom() },
-                { "Digit2", () => _playerManager.Haste() },
-                { "Digit3", () => _playerManager.Fireball() },
-                { "Digit4", () => _playerManager.SummonBeast() },
-                { "Space", () => _playerManager.TeleportRandom() }
+                { "Digit1", () => _spells.TeleportRandom() },
+                { "Digit2", () => _spells.Haste() },
+                { "Digit3", () => _spells.Fireball() },
+                { "Digit4", () => _spells.SummonBeast() },
+                { "Space", () => _spells.TeleportRandom() }
             };
 
             _keyUpCommands = new Dictionary<string, Action>()

@@ -27,6 +27,7 @@ namespace KjellBlazorDemo.AppTests
             ctx.Services.AddSingleton<ILogic, Engine.Logic>();
             ctx.Services.AddSingleton<Interactions>();
             ctx.Services.AddSingleton<AssetManager>();
+            ctx.Services.AddSingleton<ISpells, Spells>();
 
             var sets = new Settings();
 

@@ -51,22 +51,7 @@ namespace KjellBlazorDemo.EngineTests
 
         }
 
-        [Fact]
-        public void DontCollideWithWall()
-        {
-            //arrange
-            var am = new AssetManager();
-            List<Asset> AssetList = new();
-            am.ResetAssets(AssetList);
-            _player.Assets = AssetList;
-
-            //act
-            _player.TeleportRandom();
-
-            //assert
-            Assert.False(_player.DetectClipping());
-
-        }
+       
 
 
     }

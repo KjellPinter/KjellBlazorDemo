@@ -25,11 +25,6 @@ namespace KjellBlazorDemo.Engine.Interfaces
         public Rectangle Rectangle();
         void StopHorizontalMovement();
         void StopVerticalMovement();
-
-        //spells
-        void TeleportRandom();
-        void Haste();
-        void Fireball();
-        void SummonBeast();
+        bool DetectClipping();
     }      
 }

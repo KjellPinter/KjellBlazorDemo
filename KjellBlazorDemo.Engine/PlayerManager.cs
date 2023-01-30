@@ -7,8 +7,6 @@ namespace KjellBlazorDemo.Engine
 {
     public class PlayerManager : IPlayerManager
     {
-        //public int Position.Y { get; set; }
-        //public int Position.X { get; set; }
 
         public Point Position { get; set; }
         public int Width { get; set; }
@@ -45,48 +43,7 @@ namespace KjellBlazorDemo.Engine
                 this.Position.Y.ToString(), ")");
         }
 
-        #region Spells
-
-        public void TeleportRandom()
-        {
-            var rnd = new Random();
-            Position = new Point(rnd.Next(0, _settings.MAX_X), rnd.Next(0, _settings.MAX_Y));         
-        }
-
-        public void Haste()
-        {
-            _settings.MOVEMENT_DISTANCE = 10;
-        }
-
-        public void Fireball()
-        {
-            //look for target
-            var target = Assets?.FirstOrDefault(o => o.GetType() == typeof(Mob));
-            var balls = Assets?.Where(o => o.Name == "fireball");
-            
-
-            //create fireball asset as long as it has a target and there are less than 4 already
-            if (target != null && balls?.Count() < 3)
-            {
-                var fireball = new Projectile("fireball", target, Assets, this.Position.X, this.Position.Y);
-                Assets.Add(fireball);
-            }
-            
-        }
-
-        public void SummonBeast()
-        {
-            var cats = Assets?.Where(o => o.Name == "cat");
-
-            if (cats?.Count() == 0)
-            {
-                var cat = new Beast("cat", this.Position.X, this.Position.Y);
-                Assets.Add(cat);
-            }
-        }
-
-        #endregion
-
+       
         #region Player Movement
 
         public void MoveRight() => Move(_settings.MOVEMENT_DISTANCE, 0);

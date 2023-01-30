@@ -21,6 +21,6 @@ builder.Services.AddSingleton<SettingsRepository>();
 builder.Services.AddSingleton<ILogic, Logic>();
 builder.Services.AddSingleton<Interactions>();
 builder.Services.AddSingleton<AssetManager>();
-
+builder.Services.AddSingleton<ISpells, Spells>();
 
 await builder.Build().RunAsync();

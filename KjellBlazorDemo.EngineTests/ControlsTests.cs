@@ -14,7 +14,7 @@ namespace KjellBlazorDemo.EngineTests
             //global setup 
             _player = new Mock<IPlayerManager>();
             _settings = new Mock<Settings>();
-            _controls = new Controls(_player.Object);
+            _controls = new Controls(_player.Object, new Spells(_player.Object, _settings.Object));
         }
 
         //[Fact]
@@ -76,7 +76,7 @@ namespace KjellBlazorDemo.EngineTests
             //setup a real player object
             var Settings = new Settings();
             var Player = new PlayerManager(Settings);
-            var Controls = new Controls(Player);
+            var Controls = new Controls(Player, new Spells(Player, Settings));
 
             //act
             for (int i = 0; i < 50; i++)
