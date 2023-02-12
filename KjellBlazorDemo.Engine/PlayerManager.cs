@@ -127,11 +127,11 @@ namespace KjellBlazorDemo.Engine
         /// <returns>x value</returns>
         private int ValidateHorizontalMovement(int x)
         {
-            if (x < 0)
+
+            if (Position.X + x < _settings.MIN_X || (Position.X + x) > _settings.MAX_X)
             {
-                if (Position.X + x < _settings.MIN_X)
-                    x = 0;
-            }
+                x = 0;
+            }                
 
             return x;
         }
@@ -143,12 +143,11 @@ namespace KjellBlazorDemo.Engine
         /// <returns>y value</returns>
         private int ValidateVerticalMovement(int y)
         {
-            if (y < 0)
+            if ((Position.Y + y) < _settings.MIN_Y || (Position.Y + y) > _settings.MAX_Y)
             {
-                if ((Position.Y + y) < _settings.MIN_Y)
-                    y = 0;
-            }
-
+                y = 0;
+            }                
+            
             return y;
         }
 

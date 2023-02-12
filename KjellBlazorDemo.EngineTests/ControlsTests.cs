@@ -97,5 +97,37 @@ namespace KjellBlazorDemo.EngineTests
             Assert.True(Player.Position.X >= Settings.MIN_X);
             Assert.True(Player.Position.Y >= Settings.MIN_Y);
         }
+
+        [Fact]
+        public async void DontAllowMoveOffscreenRightBottom()
+        {
+            //setup a real player object
+            var Settings = new Settings();
+
+            //set artificallly small play field so test can run quicker
+            //has to be at least 100,200 though because that is the starting position
+            Settings.MAX_X = 124;
+            Settings.MAX_Y = 224;
+            
+            var Player = new PlayerManager(Settings);
+            var Controls = new Controls(Player, new Spells(Player, Settings));
+
+            //act
+            //hold down right for 1 second
+            Controls.KeyDown("ArrowRight");
+            await Task.Delay(1000);
+            Controls.KeyUp("ArrowRight");
+
+            //hold down button for 1 second
+            Controls.KeyDown("ArrowDown");
+            await Task.Delay(1000);
+            Controls.KeyUp("ArrowDown");
+            
+            
+
+            //assert
+            Assert.True(Player.Position.X <= Settings.MAX_X);
+            Assert.True(Player.Position.Y <= Settings.MAX_Y);
+        }
     }
 }
