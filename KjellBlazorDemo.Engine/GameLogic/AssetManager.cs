@@ -6,6 +6,12 @@ namespace KjellBlazorDemo.Engine.GameLogic
 {
     public class AssetManager
     {
+        private Settings _settings;
+        
+        public AssetManager(Settings settings) {
+            _settings = settings;
+        }
+        
 
         public void ResetAssets(List<Asset> list, int MobCount = 1)
         {
@@ -21,8 +27,8 @@ namespace KjellBlazorDemo.Engine.GameLogic
 
             for (int i = 0; i < count; i++)
             {
-                int t = rnd.Next(500);
-                int l = rnd.Next(500);
+                int t = rnd.Next(_settings.MIN_Y, _settings.MAX_Y);
+                int l = rnd.Next(_settings.MIN_X, _settings.MAX_X);
                 var trash = new Trash(t, l);
 
 
