@@ -23,6 +23,12 @@ namespace KjellBlazorDemo.Engine.GameLogic
         {
             var rnd = new Random();
             _player.Position = new Point(rnd.Next(0, _settings.MAX_X), rnd.Next(0, _settings.MAX_Y));
+
+            //check for collision
+            if (_player.DetectClipping())
+            {
+                TeleportRandom();
+            }
         }
 
         public void Haste()
