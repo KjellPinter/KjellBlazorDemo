@@ -26,6 +26,26 @@ namespace KjellBlazorDemo.EngineTests.Logic
             Assert.Equal(5, trashes!.Count);
         }
 
+        [Theory] //dummy parm is just a workaround to make this run multiple times
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void DontCollideWithWall(int dummyParm)
+        {
+            //arrange
+            var am = new AssetManager();
+            List<Asset> AssetList = new();
+
+            //act
+            am.ResetAssets(AssetList);
+
+            //assert
+            Assert.False(am.DetectAnyAssetWallClipping(AssetList));
+
+        }
+
         [Fact]
         public void TrashPopulates()
         {

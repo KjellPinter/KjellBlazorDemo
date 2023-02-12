@@ -1,4 +1,7 @@
 ﻿
+using KjellBlazorDemo.Engine.Models;
+using System.Drawing;
+
 namespace KjellBlazorDemo.Engine.GameLogic
 {
     public class AssetManager
@@ -11,8 +14,8 @@ namespace KjellBlazorDemo.Engine.GameLogic
             PopulateTrash(list, 5);
             PopulateMobs(list, MobCount);
         }
-
-        public void PopulateTrash(List<Asset> list, int count)
+        
+        public void PopulateTrash(List<Asset> assets, int count)
         {
             var rnd = new Random();
 
@@ -20,8 +23,47 @@ namespace KjellBlazorDemo.Engine.GameLogic
             {
                 int t = rnd.Next(500);
                 int l = rnd.Next(500);
-                list.Add(new Trash(t, l));
+                var trash = new Trash(t, l);
+
+
+                if (!DetectAsestWallCollision(assets, trash))
+                    assets.Add(trash);
             }
+        }
+
+        private bool DetectAsestWallCollision(List<Asset> assets, Asset asset)
+        {
+            foreach (var wall in assets.Where(o => o.GetType() == typeof(Wall)))
+            {
+                var isWallCollision = wall.Rectangle().IntersectsWith(asset.Rectangle());
+                if (isWallCollision)
+                {
+                    return true;
+                }         
+            }
+            
+            return false;
+        }
+
+        public bool DetectAnyAssetWallClipping(List<Asset> assets)
+        {
+            if (assets is not null)
+            {
+                foreach (var wall in assets.Where(o => o.GetType() == typeof(Wall)))
+                {
+                    foreach (var asset in assets.Where(o => o.GetType() != typeof(Wall)))
+                    {
+                        var isWallCollision = wall.Rectangle().IntersectsWith(asset.Rectangle());
+                        if (isWallCollision)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+
         }
 
         public void PopulateMobs(List<Asset> list, int count)
