@@ -38,7 +38,8 @@ namespace KjellBlazorDemo.EngineTests.Logic
         public void DontCollideWithWall()
         {
             //arrange
-            var am = new AssetManager();
+            var settings = new Settings();
+            var am = new AssetManager(settings);
             List<Asset> AssetList = new();
             am.ResetAssets(AssetList);
             _player.Assets = AssetList;
