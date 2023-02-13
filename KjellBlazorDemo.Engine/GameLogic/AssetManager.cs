@@ -33,7 +33,14 @@ namespace KjellBlazorDemo.Engine.GameLogic
 
 
                 if (!DetectAsestWallCollision(assets, trash))
+                {
                     assets.Add(trash);
+                }
+                else
+                {
+                    i--;
+                }
+                    
             }
         }
 
