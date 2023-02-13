@@ -19,6 +19,13 @@
             alert('test');
         }
 
+        function getDimensions() {
+            return {
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+        };
+
         function PlayAudioFile(src) {
             var audio = document.getElementById('audioPlayer');
             if (audio != null) {

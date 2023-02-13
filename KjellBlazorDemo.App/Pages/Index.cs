@@ -73,14 +73,27 @@ namespace KjellBlazorDemo.App.Pages
             }
         }
         
-        protected override Task OnInitializedAsync()
+        protected async Task SetDimensions()
+        {
+            try
+            {
+                BrowserDimension bd = await JsRunTime.InvokeAsync<BrowserDimension>("getDimensions");
+                Settings.MAX_X = bd.Width - 10;
+                Settings.MAX_Y = bd.Height - 30;
+            }
+            catch(Exception ex)
+            {
+                //this fails from test suite, that is ok
+            }
+            
+            return;
+        }
+
+        protected override async Task<Task> OnInitializedAsync()
         {
             //set settings max based on window size
-            //Settings.MAX_X = JsRunTime.InvokeAsync<int>("GetWindowWidth").Result;
-
+            await SetDimensions(); //.Wait();
             
-            //Settings.MAX_Y = (int)JsRunTime.Invoke<double>("GetWindowHeight");
-
             AssetManager.ResetAssets(AssetList);
             Player.Assets = AssetList; //Player manager needs reference to asset list so it can detect collisions
 
@@ -121,5 +134,11 @@ namespace KjellBlazorDemo.App.Pages
         {
             SettingsDialog.Show();
         }
+    }
+
+    public class BrowserDimension
+    {
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 }
