@@ -76,7 +76,7 @@ namespace KjellBlazorDemo.App.Pages
         protected override Task OnInitializedAsync()
         {
             //set settings max based on window size
-            Settings.MAX_X = JsRunTime.InvokeAsync<int>("GetWindowWidth").Result;
+            //Settings.MAX_X = JsRunTime.InvokeAsync<int>("GetWindowWidth").Result;
 
             
             //Settings.MAX_Y = (int)JsRunTime.Invoke<double>("GetWindowHeight");
