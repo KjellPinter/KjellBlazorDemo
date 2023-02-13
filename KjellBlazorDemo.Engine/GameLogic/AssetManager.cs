@@ -13,12 +13,12 @@ namespace KjellBlazorDemo.Engine.GameLogic
         }
         
 
-        public void ResetAssets(List<Asset> list, int MobCount = 1)
+        public void ResetAssets(List<Asset> list, int Level = 1)
         {
             list.Clear();
             PopulateWalls(list, 2, 4);
-            PopulateTrash(list, 5);
-            PopulateMobs(list, MobCount);
+            PopulateTrash(list, 5 * Level);
+            PopulateMobs(list, Level);
         }
         
         public void PopulateTrash(List<Asset> assets, int count)
