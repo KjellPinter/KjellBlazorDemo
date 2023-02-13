@@ -45,7 +45,7 @@ namespace KjellBlazorDemo.Engine.GameLogic
                 if (isWallCollision)
                 {
                     return true;
-                }         
+                }
             }
             
             return false;
@@ -91,13 +91,13 @@ namespace KjellBlazorDemo.Engine.GameLogic
             //horizontal walls
             for (int i = 0; i < wallCount; i++)
             {
-                int x = rnd.Next(500);
-                int y = rnd.Next(500);
+                int x = rnd.Next(_settings.MAX_X);
+                int y = rnd.Next(_settings.MAX_Y);
 
                 for (int j = 0; j < wallLength; j++)
                 {
                     var m = new Wall(x, y + (j * 25), 25, 25);
-                    m.Visible = true;
+                    m.Visible = true;                    
                     list.Add(m);
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using KjellBlazorDemo.App.Components;
 using KjellBlazorDemo.App.Logic;
+using KjellBlazorDemo.Engine;
 using KjellBlazorDemo.Engine.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -71,9 +72,15 @@ namespace KjellBlazorDemo.App.Pages
                 await JsRunTime.InvokeVoidAsync("OnScrollEvent");
             }
         }
-
+        
         protected override Task OnInitializedAsync()
         {
+            //set settings max based on window size
+            Settings.MAX_X = JsRunTime.InvokeAsync<int>("GetWindowWidth").Result;
+
+            
+            //Settings.MAX_Y = (int)JsRunTime.Invoke<double>("GetWindowHeight");
+
             AssetManager.ResetAssets(AssetList);
             Player.Assets = AssetList; //Player manager needs reference to asset list so it can detect collisions
 
