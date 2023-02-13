@@ -79,6 +79,9 @@ namespace KjellBlazorDemo.Engine
                 {
                     //add horizontal movement to vertical movement so it becomes one motion.  
                     x = HorizontalMovementDirection == HorizontalMovement.Left ? -_settings.MOVEMENT_DISTANCE : _settings.MOVEMENT_DISTANCE;
+                    
+                    //above bypasses validation
+                    x = ValidateHorizontalMovement(x);
                 }
             }
             
