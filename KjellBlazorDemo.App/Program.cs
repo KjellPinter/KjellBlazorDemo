@@ -14,13 +14,13 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-builder.Services.AddSingleton<IPlayerManager, PlayerManager>();
+builder.Services.AddScoped<IPlayerManager, PlayerManager>();
 builder.Services.AddSingleton<IControls, Controls>();
-builder.Services.AddSingleton<Settings>();
-builder.Services.AddSingleton<SettingsRepository>();
+builder.Services.AddScoped<Settings>();
+builder.Services.AddScoped<SettingsRepository>();
 builder.Services.AddSingleton<ILogic, Logic>();
 builder.Services.AddSingleton<Interactions>();
-builder.Services.AddSingleton<AssetManager>();
+builder.Services.AddScoped<AssetManager>();
 builder.Services.AddSingleton<ISpells, Spells>();
 
 await builder.Build().RunAsync();

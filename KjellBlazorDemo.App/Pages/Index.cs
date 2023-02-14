@@ -29,7 +29,7 @@ namespace KjellBlazorDemo.App.Pages
             MessageDialog = new MessageDialog();
             DecisionDialog = new DecisionDialog();
             
-            Message = "Move with the arrow keys and pick up the discarded cans";            
+            Message = "";
         }
 
         private void HandleKeyDown(KeyboardEventArgs a)
@@ -65,7 +65,14 @@ namespace KjellBlazorDemo.App.Pages
 
         protected override async Task OnAfterRenderAsync(bool first)
         {
-            //removeing default "first" check as focus is continually getting set elsewhere, like on window
+            if (first)
+            {
+                MessageDialog.Show("Welcome to KjellBlazorDemo! <br/><br/>" +
+                "Use the arrow or WASD keys to move the player." +
+                "Numberic keys 1-4 are your spells." +
+                "You cannot move through walls but the troll(s) can (at the moment)");
+            }
+
             if (!SettingsDialog.ShowDialog)
             {
                 await mainDiv.FocusAsync();
@@ -119,7 +126,6 @@ namespace KjellBlazorDemo.App.Pages
 
             if (!AssetList.Any(o => o.Name == "trash"))
             {
-                Message = "Level 2";
                 AssetManager.ResetAssets(AssetList, 2);
             }
 
