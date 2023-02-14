@@ -67,9 +67,9 @@ namespace KjellBlazorDemo.App.Pages
         {
             if (first)
             {
-                MessageDialog.Show("Welcome to KjellBlazorDemo! <br/><br/>" +
-                "Use the arrow or WASD keys to move the player." +
-                "Numberic keys 1-4 are your spells." +
+                MessageDialog.Show("Welcome to KjellBlazorDemo!",
+                "Use the arrow or WASD keys to move the player.",
+                "Numeric keys 1-4 are your spells.",
                 "You cannot move through walls but the troll(s) can (at the moment)");
             }
 

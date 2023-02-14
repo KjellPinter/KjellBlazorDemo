@@ -3,12 +3,15 @@
 
 @if (ShowDialog)
 {
-<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalMessage">
   <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow" style="padding-bottom: 5px">
       
         <div class="modal-header p-1 r pb-3 border-bottom-0">       
-            @Message
+            @Message<br />
+            @MessageLine2<br />
+            @MessageLine3<br />
+            @MessageLine4<br />
       </div>
 
       <div style="margin: .5rem;">
@@ -24,8 +27,12 @@
 
 
 @code {
+
     public bool ShowDialog = false;
-    public string Message = "default message";
+    public string Message = "";
+    public string MessageLine2 = "";
+    public string MessageLine3 = "";
+    public string MessageLine4 = "";
 
     public void Close()
     {
@@ -33,9 +40,12 @@
         StateHasChanged();
     }
 
-    public void Show(string message)
+    public void Show(string message, string messageLine2 = "", string messageLine3 = "", string messageLine4 = "")         
     {
         Message = message;
+        MessageLine2 = messageLine2;
+        MessageLine3 = messageLine3;
+        MessageLine4 = messageLine4;
         ShowDialog = true;
         StateHasChanged();
     }
